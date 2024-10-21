@@ -1,3 +1,5 @@
+// src/configs/themeConfig.ts
+
 /*
  * If you change the following items in the config object, you will not see any effect in the local development server
  * as these are stored in the cookie (cookie has the highest priority over the themeConfig):
@@ -54,9 +56,9 @@ export type Config = {
 }
 
 const themeConfig: Config = {
-  templateName: 'Materio',
-  homePageUrl: '/dashboards/crm',
-  settingsCookieName: 'materio-mui-next-demo-1',
+  templateName: 'Randisko',
+  homePageUrl: '/landing-page',
+  settingsCookieName: 'randisko',
   mode: 'system', // 'system', 'light', 'dark'
   skin: 'default', // 'default', 'bordered'
   semiDark: false, // true, false
@@ -81,3 +83,5 @@ const themeConfig: Config = {
 }
 
 export default themeConfig
+
+

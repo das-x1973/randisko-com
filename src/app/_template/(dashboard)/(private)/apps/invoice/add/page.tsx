@@ -2,9 +2,8 @@
 import Grid from '@mui/material/Grid'
 
 // Component Imports
-import ProjectListTable from './ProjectListTable'
-import UserActivityTimeLine from './UserActivityTimeline'
-import InvoiceListTable from './InvoiceListTable'
+import AddCard from '@views/apps/invoice/add/AddCard'
+import AddActions from '@views/apps/invoice/add/AddActions'
 
 // Data Imports
 import { getInvoiceData } from '@/app/_template/server/actions'
@@ -17,6 +16,7 @@ import { getInvoiceData } from '@/app/_template/server/actions'
  */
 
 /* const getInvoiceData = async () => {
+  // Vars
   const res = await fetch(`${process.env.API_URL}/apps/invoice`)
 
   if (!res.ok) {
@@ -24,25 +24,22 @@ import { getInvoiceData } from '@/app/_template/server/actions'
   }
 
   return res.json()
-} */
-
-const OverViewTab = async () => {
+}
+ */
+const InvoiceAdd = async () => {
   // Vars
-  const invoiceData = await getInvoiceData()
+  const data = await getInvoiceData()
 
   return (
     <Grid container spacing={6}>
-      <Grid item xs={12}>
-        <ProjectListTable />
+      <Grid item xs={12} md={9}>
+        <AddCard invoiceData={data} />
       </Grid>
-      <Grid item xs={12}>
-        <UserActivityTimeLine />
-      </Grid>
-      <Grid item xs={12}>
-        <InvoiceListTable invoiceData={invoiceData} />
+      <Grid item xs={12} md={3}>
+        <AddActions />
       </Grid>
     </Grid>
   )
 }
 
-export default OverViewTab
+export default InvoiceAdd

@@ -1,10 +1,12 @@
+// next.config.mjs
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   basePath: process.env.BASEPATH || '',
   redirects: async () => {
     return [{
     source: '/',
-    destination: '/dashboards/crm',
+    destination: '/landing-page',
     permanent: true
   }]}
 }

@@ -59,6 +59,8 @@
     "localematcher",
     "materio",
     "nextjs",
-    "tanstack"
+    "Randisko",
+    "tanstack",
+    "toastify"
   ]
 }

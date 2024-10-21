@@ -2,11 +2,13 @@
 import Grid from '@mui/material/Grid'
 
 // Component Imports
-import CustomerStatisticsCard from './CustomerStatisticsCard'
-import OrderListTable from './OrderListTable'
+import HorizontalStatisticsCard from '@views/apps/ecommerce/referrals/HorizontalStatisticsCard'
+import IconStepsCard from '@views/apps/ecommerce/referrals/IconStepsCard'
+import InviteAndShare from '@views/apps/ecommerce/referrals/InviteAndShare'
+import ReferredUsersTable from '@views/apps/ecommerce/referrals/ReferredUsersTable'
 
 // Data Imports
-import { getStatisticsData, getEcommerceData } from '@/app/_template/server/actions'
+import { getEcommerceData, getStatisticsData } from '@/app/_template/server/actions'
 
 /**
  * ! If you need data using an API call, uncomment the below API code, update the `process.env.API_URL` variable in the
@@ -44,21 +46,27 @@ import { getStatisticsData, getEcommerceData } from '@/app/_template/server/acti
   return res.json()
 } */
 
-const Overview = async () => {
+const eCommerceReferrals = async () => {
   // Vars
-  const data = await getStatisticsData()
-  const tableData = await getEcommerceData()
+  const statsData = await getStatisticsData()
+  const ecommerceData = await getEcommerceData()
 
   return (
     <Grid container spacing={6}>
       <Grid item xs={12}>
-        <CustomerStatisticsCard customerStatData={data?.customerStats} />
+        <HorizontalStatisticsCard data={statsData?.statsHorizontalWithAvatar} />
+      </Grid>
+      <Grid item xs={12} md={8}>
+        <IconStepsCard />
+      </Grid>
+      <Grid item xs={12} md={4}>
+        <InviteAndShare />
       </Grid>
       <Grid item xs={12}>
-        <OrderListTable orderData={tableData?.orderData} />
+        <ReferredUsersTable referralsData={ecommerceData?.referrals} />
       </Grid>
     </Grid>
   )
 }
 
-export default Overview
+export default eCommerceReferrals

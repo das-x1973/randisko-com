@@ -1,10 +1,11 @@
-// MUI Imports
-import Grid from '@mui/material/Grid'
+// Next Imports
+import { redirect } from 'next/navigation'
+
+// Type Imports
+import type { InvoiceType } from '@/types/apps/invoiceTypes'
 
 // Component Imports
-import ProjectListTable from './ProjectListTable'
-import UserActivityTimeLine from './UserActivityTimeline'
-import InvoiceListTable from './InvoiceListTable'
+import Preview from '@views/apps/invoice/preview'
 
 // Data Imports
 import { getInvoiceData } from '@/app/_template/server/actions'
@@ -17,6 +18,7 @@ import { getInvoiceData } from '@/app/_template/server/actions'
  */
 
 /* const getInvoiceData = async () => {
+  // Vars
   const res = await fetch(`${process.env.API_URL}/apps/invoice`)
 
   if (!res.ok) {
@@ -26,23 +28,17 @@ import { getInvoiceData } from '@/app/_template/server/actions'
   return res.json()
 } */
 
-const OverViewTab = async () => {
+const PreviewPage = async ({ params }: { params: { id: string } }) => {
   // Vars
-  const invoiceData = await getInvoiceData()
+  const data = await getInvoiceData()
 
-  return (
-    <Grid container spacing={6}>
-      <Grid item xs={12}>
-        <ProjectListTable />
-      </Grid>
-      <Grid item xs={12}>
-        <UserActivityTimeLine />
-      </Grid>
-      <Grid item xs={12}>
-        <InvoiceListTable invoiceData={invoiceData} />
-      </Grid>
-    </Grid>
-  )
+  const filteredData = data?.filter((invoice: InvoiceType) => invoice.id === params.id)[0]
+
+  if (!filteredData) {
+    redirect('/not-found')
+  }
+
+  return filteredData ? <Preview invoiceData={filteredData} id={params.id} /> : null
 }
 
-export default OverViewTab
+export default PreviewPage
