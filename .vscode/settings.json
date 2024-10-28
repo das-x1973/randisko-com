@@ -51,6 +51,7 @@
     "cuid",
     "customizer",
     "datasource",
+    "deepmerge",
     "fkey",
     "formatjs",
     "formkit",
@@ -60,6 +61,7 @@
     "materio",
     "nextjs",
     "Randisko",
+    "stylis",
     "tanstack",
     "toastify"
   ]
