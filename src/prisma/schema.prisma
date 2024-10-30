@@ -4,25 +4,24 @@ datasource db {
 }
 
 generator client {
-  provider        = "prisma-client-js"
-  binaryTargets   = ["native", "debian-openssl-3.0.x", "linux-arm64-openssl-1.1.x", "rhel-openssl-3.0.x"]
+  provider = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x", "linux-arm64-openssl-1.1.x", "rhel-openssl-3.0.x"]
 }
 
 model Account {
-  id                 String  @id @default(cuid())
-  userId             String
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String?
-  access_token       String?
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String?
-  session_state      String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
@@ -36,47 +35,104 @@ model Session {
 }
 
 model User {
-  id            String       @id @default(cuid())
-  name          String?
-  email         String?      @unique
-  emailVerified DateTime?
-  image         String?
-  accounts      Account[]
-  sessions      Session[]
-
-  // Reverse relation fields
-  profile       UserProfile? // One-to-one relation to UserProfile
-  images        UserImage[]  // One-to-many relation to UserImage
+  id                 String    @id @default(cuid())
+  name               String?
+  email              String?   @unique
+  emailVerified      DateTime?
+  image              String?
+  accounts           Account[]
+  sessions           Session[]
+  profile            UserProfile?
+  images             UserImage[]
+  mindfulnessProfile MindfulnessProfile?
+  matchesInitiated   Match[]   @relation("UserMatches1")
+  matchesReceived    Match[]   @relation("UserMatches2")
+  conversations      ConversationParticipant[]
+  messages           Message[]
 }
 
 model UserProfile {
-  id                    String   @id @default(cuid())
-  nick                  String?  // Optional text
-  image                 String?  // Optional text
-  gender                String?  // Optional text
-  interested_in         String?  // Optional text
-  bio                   String?  // Optional text
-  location              String?  // Optional text
-  latitude              Float?   // Double precision
-  longitude             Float?   // Double precision
-  matching_radius       Int?     // Integer
-  wizard_step_completed Int?     // Integer
-  status                String?  // Optional text
-  has_logged_in         Boolean  // Boolean field
-
-  // Relation to User (one-to-one)
-  user                  User     @relation(fields: [id], references: [id], onDelete: Cascade)
+  id                   String   @id @default(cuid())
+  nick                 String?
+  image                String?
+  gender               String?
+  interested_in        String?
+  bio                  String?
+  location             String?
+  latitude             Float?
+  longitude            Float?
+  matching_radius      Int?
+  wizard_step_completed Int?
+  status               String?
+  has_logged_in        Boolean
+  user                 User     @relation(fields: [id], references: [id], onDelete: Cascade)
 }
 
 model UserImage {
   id        String  @id @default(cuid())
   userId    String
   url       String
-  name      String? // Optional text for image name
-  isProfile Boolean // Boolean to mark as profile image
-
-  // Relation to User (one-to-many)
+  name      String?
+  isProfile Boolean
   user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Match {
+  id           String        @id @default(cuid())
+  user1Id      String
+  user2Id      String
+  status       String        // pending, accepted, rejected
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  user1        User          @relation("UserMatches1", fields: [user1Id], references: [id])
+  user2        User          @relation("UserMatches2", fields: [user2Id], references: [id])
+  conversation Conversation?
+}
+
+model Conversation {
+  id            String                    @id @default(cuid())
+  matchId       String                    @unique
+  match         Match                     @relation(fields: [matchId], references: [id])
+  messages      Message[]
+  lastMessageAt DateTime                  @default(now())
+  createdAt     DateTime                  @default(now())
+  updatedAt     DateTime                  @updatedAt
+  isActive      Boolean                   @default(true)
+  participants  ConversationParticipant[]
+}
+
+model ConversationParticipant {
+  id             String       @id @default(cuid())
+  userId         String
+  conversationId String
+  user           User         @relation(fields: [userId], references: [id])
+  conversation   Conversation @relation(fields: [conversationId], references: [id])
+  lastReadAt     DateTime?
+  hasUnread      Boolean      @default(false)
+
+  @@unique([userId, conversationId])
+}
+
+model Message {
+  id             String       @id @default(cuid())
+  conversationId String
+  senderId       String
+  content        String
+  contentType    String       @default("text")
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  isEdited       Boolean      @default(false)
+  conversation   Conversation @relation(fields: [conversationId], references: [id])
+  sender         User         @relation(fields: [senderId], references: [id])
+}
+
+model MindfulnessProfile {
+  id            String   @id @default(cuid())
+  userId        String   @unique
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  meditationExp String?
+  practices     String[]
+  goals         String[]
 }
 
 model VerificationToken {
@@ -86,5 +142,4 @@ model VerificationToken {
 
   @@unique([identifier, token])
 }
-
 
