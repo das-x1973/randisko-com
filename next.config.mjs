@@ -5,8 +5,8 @@ const nextConfig = {
   basePath: process.env.BASEPATH || '',
   redirects: async () => {
     return [{
-    source: '/',
-    destination: '/landing-page',
+    source: '/home',
+    destination: '/',
     permanent: true
   }]}
 }

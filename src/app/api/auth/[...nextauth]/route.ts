@@ -1,3 +1,5 @@
+// src/app/api/auth/[...nextauth]/route.ts
+
 // Third-party Imports
 import NextAuth from 'next-auth'
 

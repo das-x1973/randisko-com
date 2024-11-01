@@ -1,4 +1,4 @@
-// src/app/(randisko)/(public)/landing-page/page.tsx
+// src/app/page.tsx
 import type { Metadata } from 'next'
 
 import LandingPageWrapper from '@views/front-pages/landing-page'

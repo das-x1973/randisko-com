@@ -57,7 +57,7 @@ export type Config = {
 
 const themeConfig: Config = {
   templateName: 'Randisko',
-  homePageUrl: '/landing-page',
+  homePageUrl: '/home',
   settingsCookieName: 'randisko',
   mode: 'system', // 'system', 'light', 'dark'
   skin: 'default', // 'default', 'bordered'
