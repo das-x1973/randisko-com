@@ -115,8 +115,8 @@ export const authOptions: NextAuthOptions = {
   },
 
   pages: {
-    signIn: '/login',
-    verifyRequest: '/verify-email'
+    signIn: '/auth/login',
+    verifyRequest: '/auth/verify-email'
   },
 
   events: {
