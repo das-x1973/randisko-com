@@ -8,10 +8,12 @@ declare module 'next-auth' {
       email?: string | null
       name?: string | null
       image?: string | null
+      role?: string // Add role to Session.user
     }
   }
-  
+
   interface User {
     id: string // Define this for JWT callback usage
+    role?: string // Add role to User
   }
 }
