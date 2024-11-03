@@ -37,61 +37,43 @@ export const authOptions: NextAuthOptions = {
     })
   ],
   callbacks: {
-    async signIn({ user, account, profile }) {
-      try {
-        // Ensure email is defined as string or undefined (no null)
-        const email = user?.email ?? undefined
-
-        if (!email) {
-          console.error('No email provided by', account?.provider)
-          return false
-        }
-
-        // Create or update UserProfile
-        await prisma.$transaction(async tx => {
-          // First ensure user exists
-          const dbUser = await tx.user.upsert({
-            where: { email },
-            create: {
-              email,
-              name: user.name,
-              image: user.image,
-              role: 'user'
-            },
-            update: {
-              name: user.name || undefined,
-              image: user.image || undefined,
-              lastLoginAt: new Date()
-            }
-          })
-
-          // Then create/update profile linked to userId
-          await tx.userProfile.upsert({
-            where: { userId: dbUser.id },
-            create: {
-              userId: dbUser.id,
-              has_logged_in: true,
-              wizard_step_completed: 0,
-              image: user.image || null,
-              nick: user.name || null,
-              status: 'active'
-            },
-            update: {
-              has_logged_in: true,
-              image: user.image || undefined,
-              nick: user.name || undefined,
-              lastActive: new Date()
-            }
-          })
-        })
-
-        return true
-      } catch (error) {
-        console.error('Error in signIn callback:', error)
+    async signIn({ user, account }) {
+      const email = user?.email ?? undefined
+      if (!email) {
+        console.error('No email provided by', account?.provider)
         return false
       }
-    },
 
+      // Find an existing user with the same email
+      const existingUser = await prisma.user.findUnique({ where: { email } })
+      if (existingUser && account) {
+        // Link this OAuth account to the existing user
+        await prisma.account.upsert({
+          where: {
+            provider_providerAccountId: { provider: account.provider, providerAccountId: account.providerAccountId }
+          },
+          create: {
+            userId: existingUser.id,
+            provider: account.provider,
+            providerAccountId: account.providerAccountId,
+            type: 'oauth', // Add type property (e.g., 'oauth' for social providers)
+            access_token: account.access_token,
+            refresh_token: account.refresh_token,
+            expires_at: account.expires_at,
+            token_type: account.token_type,
+            scope: account.scope,
+            id_token: account.id_token,
+            session_state: account.session_state
+          },
+          update: {}
+        })
+        return true
+      }
+
+      // If no existing user, proceed with creating a new user
+      return true
+    },
+    
     async session({ session, token }) {
       if (session?.user) {
         session.user.id = token.sub as string
@@ -103,7 +85,7 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id
-        token.role = user.role // Directly use role from User
+        token.role = user.role
       }
       return token
     }
