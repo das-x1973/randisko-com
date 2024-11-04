@@ -48,7 +48,8 @@ const LandingPageWrapper = ({ mode }: { mode: Mode }) => {
     return updatePageSettings({
       skin: 'default'
     })
-  }, [updatePageSettings])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <StyledBox>

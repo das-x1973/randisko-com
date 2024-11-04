@@ -30,11 +30,12 @@ export const metadata = {
 const Layout = ({ children }: ChildrenType) => {
   // Vars
   const systemMode = getSystemMode()
+  const direction = 'ltr'
 
   return (
-    <html id='__next'>
+    <html id='__next' lang='en' dir={direction}>
       <body className='flex is-full min-bs-full flex-auto flex-col'>
-        <Providers direction='ltr'>
+        <Providers direction={direction}>
           <BlankLayout systemMode={systemMode}>
             <IntersectionProvider>
               <FrontLayout>{children}</FrontLayout>
