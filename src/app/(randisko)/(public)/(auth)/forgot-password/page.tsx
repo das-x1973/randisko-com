@@ -12,3 +12,4 @@ const ForgotPasswordV1Page = () => {
 }
 
 export default ForgotPasswordV1Page
+
