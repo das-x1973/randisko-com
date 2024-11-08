@@ -44,3 +44,4 @@ export const IntersectionProvider = ({ children }: { children: ReactNode }) => {
     </IntersectionContext.Provider>
   )
 }
+
