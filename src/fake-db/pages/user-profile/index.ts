@@ -1,3 +1,5 @@
+// src/fake-db/pages/user-profile/index.ts
+
 // Type Imports
 import type { ProfileHeaderType, DataType } from '@/types/pages/profileTypes'
 

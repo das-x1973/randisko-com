@@ -1,8 +1,10 @@
 // src/app/(randisko)/(public)/terms/page.tsx
+
 import type { Metadata } from 'next'
 
-import TermsView from '@/views/pages/legal/TermsView'
+import TermsView from '@/views/randisko/legal/TermsView'
 import { getServerMode } from '@core/utils/serverHelpers'
+import appConfig from '@/configs/appConfig' // Import global config
 
 export const metadata: Metadata = {
   title: 'Terms of Service | Randisko - Mindful Dating',
@@ -16,7 +18,9 @@ export const metadata: Metadata = {
 
 const TermsPage = () => {
   const mode = getServerMode()
-  return <TermsView mode={mode} />
+  const { region, language } = appConfig // Use global config for region and language
+
+  return <TermsView mode={mode} region={region} language={language} />
 }
 
 export default TermsPage

@@ -1,3 +1,5 @@
+// .eslintrc.js
+
 module.exports = {
   extends: ['next/core-web-vitals', 'plugin:@typescript-eslint/recommended', 'plugin:import/recommended', 'prettier'],
   rules: {
@@ -49,43 +51,13 @@ module.exports = {
         next: '*'
       }
     ],
-    'newline-before-return': 'off', // Disable this rule globally
+
+    // Disable rule completely here
+    'newline-before-return': 'off',
     'padding-line-between-statements': 'off',
-    'import/newline-after-import': [
-      'error',
-      {
-        count: 1
-      }
-    ],
-    'import/order': [
-      'error',
-      {
-        groups: ['builtin', 'external', ['internal', 'parent', 'sibling', 'index'], ['object', 'unknown']],
-        pathGroups: [
-          {
-            pattern: 'react',
-            group: 'external',
-            position: 'before'
-          },
-          {
-            pattern: 'next/**',
-            group: 'external',
-            position: 'before'
-          },
-          {
-            pattern: '~/**',
-            group: 'external',
-            position: 'before'
-          },
-          {
-            pattern: '@/**',
-            group: 'internal'
-          }
-        ],
-        pathGroupsExcludedImportTypes: ['react', 'type'],
-        'newlines-between': 'always-and-inside-groups'
-      }
-    ],
+    'import/newline-after-import': 'off',
+    'import/order': 'off',
+
     '@typescript-eslint/ban-types': [
       'error',
       {

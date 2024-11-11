@@ -42,6 +42,55 @@ model Session {
   @@map("sessions")
 }
 
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+model CompanyInfo {
+  id              String   @id @default(cuid())
+  name            String
+  legalName       String
+  street          String
+  city            String
+  postcode        String
+  country         String
+  emailGeneral    String
+  emailPrivacy    String
+  emailLegal      String
+  phone           String
+  registrationNo  String
+  vatId           String
+  socialFacebook  String?
+  socialInstagram String?
+  socialTwitter   String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @default(now()) @updatedAt
+}
+
+model LegalDocument {
+  id          String    @id @default(cuid())
+  type        String    // "privacy", "terms", "pricing"
+  region      String    // Country code like "UK", "IE", "AU", etc.
+  language    String    // Language code like "en", "es", etc.
+  version     Int
+  title       String
+  content     Json
+  isActive    Boolean   @default(false)
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @default(now()) @updatedAt
+  authorId    String?
+
+  @@index([type, region, isActive])
+  @@index([version])
+}
+
+
 model User {
   id                 String                    @id @default(cuid())
   name               String?
@@ -53,7 +102,6 @@ model User {
   sessions           Session[]
   profile            UserProfile?
   images             UserImage[]
-  mindfulnessProfile MindfulnessProfile?
   matchesInitiated   Match[]                   @relation("UserMatches1")
   matchesReceived    Match[]                   @relation("UserMatches2")
   conversations      ConversationParticipant[]
@@ -67,15 +115,6 @@ model User {
   @@map("users")
   @@index([email])
   @@index([role])
-}
-
-model VerificationToken {
-  identifier String
-  token      String
-  expires    DateTime
-
-  @@unique([identifier, token])
-  @@map("verification_tokens")
 }
 
 model UserActivity {
@@ -129,20 +168,6 @@ model UserImage {
   @@index([userId])
 }
 
-model MindfulnessProfile {
-  id          String   @id @default(cuid())
-  userId      String   @unique
-  meditation  Int?
-  sessions    Int?
-  level       String?
-  preferences Json?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @default(now()) @updatedAt
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@index([userId])
-}
-
 model Match {
   id           String @id @default(cuid())
   initiatorId  String
@@ -186,41 +211,4 @@ model Conversation {
   startedAt     DateTime                 @default(now())
   messages      Message[]
   participants  ConversationParticipant[]
-}
-
-model CompanyInfo {
-  id              String   @id @default(cuid())
-  name            String
-  legalName       String
-  street          String
-  city            String
-  postcode        String
-  country         String
-  emailGeneral    String
-  emailPrivacy    String
-  emailLegal      String
-  phone           String
-  registrationNo  String
-  vatId           String
-  socialFacebook  String?
-  socialInstagram String?
-  socialTwitter   String?
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @default(now()) @updatedAt
-}
-
-model LegalDocument {
-  id          String    @id @default(cuid())
-  type        String
-  version     Int
-  title       String
-  content     Json
-  isActive    Boolean   @default(false)
-  publishedAt DateTime?
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @default(now()) @updatedAt
-  authorId    String?
-
-  @@index([type, isActive])
-  @@index([version])
 }

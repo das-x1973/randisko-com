@@ -1,4 +1,5 @@
-// src/views/front-pages/pricing/PricingSection.tsx
+// src/views/randisko/pricing/PricingSection.tsx
+
 
 // Third-party Imports
 import classnames from 'classnames'

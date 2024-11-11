@@ -1,8 +1,9 @@
 // src/app/(randisko)/(public)/privacy/page.tsx
-import type { Metadata } from 'next'
 
-import PrivacyView from '@/views/pages/legal/PrivacyView'
+import type { Metadata } from 'next'
+import PrivacyView from '@/views/randisko/legal/PrivacyView'
 import { getServerMode } from '@core/utils/serverHelpers'
+import appConfig from '@/configs/appConfig'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy | Randisko - Mindful Dating',
@@ -17,7 +18,9 @@ export const metadata: Metadata = {
 
 const PrivacyPage = () => {
   const mode = getServerMode()
-  return <PrivacyView mode={mode} />
+  const { region, language } = appConfig // Use global config for region and language
+
+  return <PrivacyView mode={mode} region={region} language={language} />
 }
 
 export default PrivacyPage

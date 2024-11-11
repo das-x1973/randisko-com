@@ -1,4 +1,7 @@
-// src/types/next-auth.d.ts
+// src/types/randisko/next-auth.d.ts
+
+
+
 import NextAuth from 'next-auth'
 
 declare module 'next-auth' {
