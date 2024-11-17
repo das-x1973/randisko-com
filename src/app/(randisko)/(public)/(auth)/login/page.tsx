@@ -1,7 +1,8 @@
-// src/app/(randisko)/(auth)/login/page.tsx
+// src/app/(randisko)/(public)/(auth)/login/page.tsx
+
 
 // Component Imports
-import LoginV1 from '@views/pages/auth/LoginV1'
+import LoginV1 from '@views/randisko/auth/LoginV1'
 
 // Server Action Imports
 import { getServerMode } from '@core/utils/serverHelpers'

@@ -1,7 +1,7 @@
 // src/app/(randisko)/(public)/pricing/page.tsx
 
 // Component Imports
-import PricingWrapper from '@/views/randisko/pricing'
+import PricingWrapper from '@/views/randisko/front-pages/pricing'
 
 // Import centralized pricing data directly for Phase 1
 import { pricingData } from '@/configs/pricingData'

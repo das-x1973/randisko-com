@@ -1,3 +1,6 @@
+// src/views/randisko/front-pages/pricing/FreeTrial.tsx
+
+
 // Next Imports
 import Link from 'next/link'
 
@@ -10,7 +13,7 @@ import Grid from '@mui/material/Grid'
 import classnames from 'classnames'
 
 // Styles Imports
-import frontCommonStyles from '@views/front-pages/styles.module.css'
+import frontCommonStyles from '@views/randisko/front-pages/styles.module.css'
 
 const FreeTrial = () => {
   return (

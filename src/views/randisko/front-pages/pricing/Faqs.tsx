@@ -1,4 +1,4 @@
-// src/views/randisko/pricing/Faqs.tsx
+// src/views/randisko/front-pages/pricing/Faqs.tsx
 
 import { pricingData } from '@/configs/pricingData'
 import Typography from '@mui/material/Typography'
@@ -6,7 +6,7 @@ import Accordion from '@mui/material/Accordion'
 import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
 import classnames from 'classnames'
-import frontCommonStyles from '@views/front-pages/styles.module.css'
+import frontCommonStyles from '@views/randisko/front-pages/styles.module.css'
 
 const Faqs = () => {
   return (

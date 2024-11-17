@@ -1,18 +1,30 @@
-// src/views/randisko/pricing/Plans.tsx
+// src/views/randisko/front-pages/pricing/Plans.tsx
 
+// Data import
 import { pricingData } from '@/configs/pricingData'
+
+// MUI Imports
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
+
+// Third-party Imports
 import classnames from 'classnames'
+
+// Styles Imports
 import styles from './styles.module.css'
 import tableStyles from '@core/styles/table.module.css'
 
 function Plans() {
+  // Get a unique list of all benefits across all plans
+  const allBenefits = Array.from(
+    new Set(pricingData.plans.flatMap((plan) => plan.planBenefits))
+  );
+
   return (
     <section className='md:plb-[100px] plb-[50px] bg-backgroundPaper'>
       <div className='flex flex-col text-center gap-2 mbe-6'>
         <Typography variant='h4'>Pick a plan that works best for you</Typography>
-        <Typography>Stay cool, we have a 48-hour money back guarantee!</Typography>
+        <Typography>Love it or leave it, no strings attached—just like speed dating, but with a refund!</Typography>
       </div>
       <div className='overflow-x-auto border rounded'>
         <table className={tableStyles.table}>
@@ -32,7 +44,7 @@ function Plans() {
             </tr>
           </thead>
           <tbody className={classnames('border-be', styles.tableBody)}>
-            {pricingData.plans[0]?.planBenefits?.map((benefit, benefitIndex) => (
+            {allBenefits.map((benefit, benefitIndex) => (
               <tr key={benefitIndex}>
                 <td>{benefit}</td>
                 {pricingData.plans.map((plan) => (
@@ -66,5 +78,3 @@ function Plans() {
 }
 
 export default Plans
-
-

@@ -1,7 +1,9 @@
 // src/app/(randisko)/(public)/(home)/page.tsx
+
+
 import type { Metadata } from 'next'
 
-import LandingPageWrapper from '@views/front-pages/landing-page'
+import LandingPageWrapper from '@/views/randisko/front-pages/landing-page'
 import { getServerMode } from '@core/utils/serverHelpers'
 
 export const metadata: Metadata = {

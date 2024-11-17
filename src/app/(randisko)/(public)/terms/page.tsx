@@ -2,7 +2,7 @@
 
 import type { Metadata } from 'next'
 
-import TermsView from '@/views/randisko/legal/TermsView'
+import TermsView from '@/views/randisko/front-pages/legal/TermsView'
 import { getServerMode } from '@core/utils/serverHelpers'
 import appConfig from '@/configs/appConfig' // Import global config
 

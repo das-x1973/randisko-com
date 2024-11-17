@@ -1,5 +1,8 @@
+// src/app/(randisko)/(public)/(auth)/forgot-password/page.tsx
+
+
 // Component Imports
-import ForgotPasswordV1 from '@views/pages/auth/ForgotPasswordV1'
+import ForgotPasswordV1 from '@views/randisko/auth/ForgotPasswordV1'
 
 // Server Action Imports
 import { getServerMode } from '@core/utils/serverHelpers'

@@ -1,7 +1,7 @@
 // src/app/(randisko)/(public)/privacy/page.tsx
 
 import type { Metadata } from 'next'
-import PrivacyView from '@/views/randisko/legal/PrivacyView'
+import PrivacyView from '@/views/randisko/front-pages/legal/PrivacyView'
 import { getServerMode } from '@core/utils/serverHelpers'
 import appConfig from '@/configs/appConfig'
 

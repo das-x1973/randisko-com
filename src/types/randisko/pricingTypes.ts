@@ -11,7 +11,6 @@ export type PricingPlanType = {
   popularPlan: boolean
   monthlyPrice: number
   speedDatingPrice: number
-  adFree: boolean
   planBenefits: string[]
   yearlyPlan: {
     monthly: number

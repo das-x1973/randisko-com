@@ -1,5 +1,8 @@
+// src/app/(randisko)/(public)/(auth)/two-steps/page.tsx
+
+
 // Component Imports
-import TwoStepsV1 from '@views/pages/auth/TwoStepsV1'
+import TwoStepsV1 from '@views/randisko/auth/TwoStepsV1'
 
 // Server Action Imports
 import { getServerMode } from '@core/utils/serverHelpers'
