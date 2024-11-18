@@ -2,10 +2,10 @@
 import Grid from '@mui/material/Grid'
 
 // Component Imports
-import Award from '@views/pages/widget-examples/gamification/Award'
-import Congratulations from '@views/pages/widget-examples/gamification/Congratulations'
-import WelcomeBack from '@views/pages/widget-examples/gamification/WelcomeBack'
-import UpgradeAccount from '@views/pages/widget-examples/gamification/UpgradeAccount'
+import Award from '@/views/_template/pages/widget-examples/gamification/Award'
+import Congratulations from '@/views/_template/pages/widget-examples/gamification/Congratulations'
+import WelcomeBack from '@/views/_template/pages/widget-examples/gamification/WelcomeBack'
+import UpgradeAccount from '@/views/_template/pages/widget-examples/gamification/UpgradeAccount'
 
 const Gamification = () => {
   return (

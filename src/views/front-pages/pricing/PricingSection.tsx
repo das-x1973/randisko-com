@@ -1,13 +1,14 @@
-// src/views/front-pages/pricing/PricingSection.tsx
+// src/views/randisko/pricing/PricingSection.tsx
+
 
 // Third-party Imports
 import classnames from 'classnames'
 
 // Type Imports
-import type { PricingPlanType } from '@/types/pages/pricingTypes'
+import type { PricingPlanType } from '@/types/randisko/pricingTypes'
 
 // Component Imports
-import Pricing from '@components/pricing'
+import Pricing from '@components/randisko/pricing'
 
 // Styles Imports
 import frontCommonStyles from '@views/front-pages/styles.module.css'

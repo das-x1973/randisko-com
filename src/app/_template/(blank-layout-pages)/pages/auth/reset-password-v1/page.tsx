@@ -1,5 +1,5 @@
 // Component Imports
-import ResetPasswordV1 from '@views/pages/auth/ResetPasswordV1'
+import ResetPasswordV1 from '@/views/_template/pages/auth/ResetPasswordV1'
 
 // Server Action Imports
 import { getServerMode } from '@core/utils/serverHelpers'

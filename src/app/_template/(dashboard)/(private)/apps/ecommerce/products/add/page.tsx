@@ -2,13 +2,13 @@
 import Grid from '@mui/material/Grid'
 
 // Component Imports
-import ProductAddHeader from '@views/apps/ecommerce/products/add/ProductAddHeader'
-import ProductInformation from '@views/apps/ecommerce/products/add/ProductInformation'
-import ProductImage from '@views/apps/ecommerce/products/add/ProductImage'
-import ProductVariants from '@views/apps/ecommerce/products/add/ProductVariants'
-import ProductInventory from '@views/apps/ecommerce/products/add/ProductInventory'
-import ProductPricing from '@views/apps/ecommerce/products/add/ProductPricing'
-import ProductOrganize from '@views/apps/ecommerce/products/add/ProductOrganize'
+import ProductAddHeader from '@/views/_template/apps/ecommerce/products/add/ProductAddHeader'
+import ProductInformation from '@/views/_template/apps/ecommerce/products/add/ProductInformation'
+import ProductImage from '@/views/_template/apps/ecommerce/products/add/ProductImage'
+import ProductVariants from '@/views/_template/apps/ecommerce/products/add/ProductVariants'
+import ProductInventory from '@/views/_template/apps/ecommerce/products/add/ProductInventory'
+import ProductPricing from '@/views/_template/apps/ecommerce/products/add/ProductPricing'
+import ProductOrganize from '@/views/_template/apps/ecommerce/products/add/ProductOrganize'
 
 const eCommerceProductsAdd = () => {
   return (

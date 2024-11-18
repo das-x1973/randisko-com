@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation'
 import type { Customer } from '@/types/apps/ecommerceTypes'
 
 // Component Imports
-import CustomerDetails from '@/views/apps/ecommerce/customers/details'
+import CustomerDetails from '@/views/_template/apps/ecommerce/customers/details'
 
 // Data Imports
 import { getEcommerceData } from '@/app/_template/server/actions'

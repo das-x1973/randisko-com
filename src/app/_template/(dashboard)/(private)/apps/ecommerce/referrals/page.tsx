@@ -2,10 +2,10 @@
 import Grid from '@mui/material/Grid'
 
 // Component Imports
-import HorizontalStatisticsCard from '@views/apps/ecommerce/referrals/HorizontalStatisticsCard'
-import IconStepsCard from '@views/apps/ecommerce/referrals/IconStepsCard'
-import InviteAndShare from '@views/apps/ecommerce/referrals/InviteAndShare'
-import ReferredUsersTable from '@views/apps/ecommerce/referrals/ReferredUsersTable'
+import HorizontalStatisticsCard from '@/views/_template/apps/ecommerce/referrals/HorizontalStatisticsCard'
+import IconStepsCard from '@/views/_template/apps/ecommerce/referrals/IconStepsCard'
+import InviteAndShare from '@/views/_template/apps/ecommerce/referrals/InviteAndShare'
+import ReferredUsersTable from '@/views/_template/apps/ecommerce/referrals/ReferredUsersTable'
 
 // Data Imports
 import { getEcommerceData, getStatisticsData } from '@/app/_template/server/actions'

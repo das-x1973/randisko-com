@@ -2,9 +2,9 @@
 import Grid from '@mui/material/Grid'
 
 // Component Imports
-import TotalReviews from '@views/apps/ecommerce/manage-reviews/TotalReviews'
-import ReviewsStatistics from '@views/apps/ecommerce/manage-reviews/ReviewsStatistics'
-import ManageReviewsTable from '@views/apps/ecommerce/manage-reviews/ManageReviewsTable'
+import TotalReviews from '@/views/_template/apps/ecommerce/manage-reviews/TotalReviews'
+import ReviewsStatistics from '@/views/_template/apps/ecommerce/manage-reviews/ReviewsStatistics'
+import ManageReviewsTable from '@/views/_template/apps/ecommerce/manage-reviews/ManageReviewsTable'
 
 // Data Imports
 import { getEcommerceData } from '@/app/_template/server/actions'

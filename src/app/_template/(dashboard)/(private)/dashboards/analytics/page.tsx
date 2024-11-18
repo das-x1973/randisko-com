@@ -2,17 +2,17 @@
 import Grid from '@mui/material/Grid'
 
 // Components Imports
-import Award from '@views/dashboards/analytics/Award'
-import Transactions from '@views/dashboards/analytics/Transactions'
-import WeeklyOverview from '@views/dashboards/analytics/WeeklyOverview'
-import TotalEarning from '@views/dashboards/analytics/TotalEarning'
-import LineChart from '@views/dashboards/analytics/LineChart'
-import DistributedColumnChart from '@views/dashboards/analytics/DistributedColumnChart'
-import Performance from '@views/dashboards/analytics/Performance'
-import DepositWithdraw from '@views/dashboards/analytics/DepositWithdraw'
-import SalesByCountries from '@views/dashboards/analytics/SalesByCountries'
+import Award from '@/views/_template/dashboards/analytics/Award'
+import Transactions from '@/views/_template/dashboards/analytics/Transactions'
+import WeeklyOverview from '@/views/_template/dashboards/analytics/WeeklyOverview'
+import TotalEarning from '@/views/_template/dashboards/analytics/TotalEarning'
+import LineChart from '@/views/_template/dashboards/analytics/LineChart'
+import DistributedColumnChart from '@/views/_template/dashboards/analytics/DistributedColumnChart'
+import Performance from '@/views/_template/dashboards/analytics/Performance'
+import DepositWithdraw from '@/views/_template/dashboards/analytics/DepositWithdraw'
+import SalesByCountries from '@/views/_template/dashboards/analytics/SalesByCountries'
 import CardStatVertical from '@components/card-statistics/Vertical'
-import Table from '@views/dashboards/analytics/Table'
+import Table from '@/views/_template/dashboards/analytics/Table'
 
 const DashboardAnalytics = () => {
   return (

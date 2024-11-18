@@ -1,5 +1,5 @@
 // Component Imports
-import Pricing from '@views/pages/pricing'
+import Pricing from '@/views/_template/pages/pricing'
 
 // Data Imports
 import { getPricingData } from '@/app/_template/server/actions'

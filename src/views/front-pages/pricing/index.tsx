@@ -1,17 +1,20 @@
+// src/views/randisko/pricing/index.tsx
+
+
 'use client'
 
 // React Imports
 import { useEffect } from 'react'
 
 // Component Imports
-import PricingSection from '@views/front-pages/pricing/PricingSection'
+import PricingSection from './PricingSection'
 import FreeTrial from './FreeTrial'
 import Plans from './Plans'
 import Faqs from './Faqs'
 import { useSettings } from '@core/hooks/useSettings'
 
 // Type Imports
-import type { PricingPlanType } from '@/types/pages/pricingTypes'
+import type { PricingPlanType } from '@/types/randisko/pricingTypes'
 
 const PricingWrapper = ({ data }: { data: PricingPlanType[] }) => {
   // Hooks
@@ -28,7 +31,7 @@ const PricingWrapper = ({ data }: { data: PricingPlanType[] }) => {
   return (
     <>
       <PricingSection data={data} />
-      <FreeTrial />
+      {/* <FreeTrial /> */}
       <Plans />
       <Faqs />
     </>

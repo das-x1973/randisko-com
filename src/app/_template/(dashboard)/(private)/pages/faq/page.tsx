@@ -1,5 +1,5 @@
 // Component Imports
-import FAQ from '@views/pages/faq'
+import FAQ from '@/views/_template/pages/faq'
 
 // Data Imports
 import { getFaqData } from '@/app/_template/server/actions'

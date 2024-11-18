@@ -2,17 +2,17 @@
 import Grid from '@mui/material/Grid'
 
 // Components Imports
-import Congratulations from '@views/dashboards/ecommerce/Congratulations'
+import Congratulations from '@/views/_template/dashboards/ecommerce/Congratulations'
 import CardStatVertical from '@components/card-statistics/Vertical'
-import TotalProfitStackedBar from '@views/dashboards/ecommerce/TotalProfitStackedBar'
-import TotalSales from '@views/dashboards/ecommerce/TotalSales'
-import LineChartWithShadow from '@views/dashboards/ecommerce/LineChartWithShadow'
-import RadialBarChart from '@views/dashboards/ecommerce/RadialBarChart'
-import Transactions from '@views/dashboards/ecommerce/Transactions'
-import NewVisitors from '@views/dashboards/ecommerce/NewVisitors'
-import WebsiteStatistics from '@views/dashboards/ecommerce/WebsiteStatistics'
-import Table from '@views/dashboards/ecommerce/Table'
-import MeetingSchedule from '@views/dashboards/ecommerce/MeetingSchedule'
+import TotalProfitStackedBar from '@/views/_template/dashboards/ecommerce/TotalProfitStackedBar'
+import TotalSales from '@/views/_template/dashboards/ecommerce/TotalSales'
+import LineChartWithShadow from '@/views/_template/dashboards/ecommerce/LineChartWithShadow'
+import RadialBarChart from '@/views/_template/dashboards/ecommerce/RadialBarChart'
+import Transactions from '@/views/_template/dashboards/ecommerce/Transactions'
+import NewVisitors from '@/views/_template/dashboards/ecommerce/NewVisitors'
+import WebsiteStatistics from '@/views/_template/dashboards/ecommerce/WebsiteStatistics'
+import Table from '@/views/_template/dashboards/ecommerce/Table'
+import MeetingSchedule from '@/views/_template/dashboards/ecommerce/MeetingSchedule'
 
 // Data Imports
 import { getInvoiceData } from '@/app/_template/server/actions'

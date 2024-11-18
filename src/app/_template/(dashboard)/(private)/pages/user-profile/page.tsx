@@ -8,15 +8,15 @@ import dynamic from 'next/dynamic'
 import type { Data } from '@/types/pages/profileTypes'
 
 // Component Imports
-import UserProfile from '@views/pages/user-profile'
+import UserProfile from '@/views/_template/pages/user-profile'
 
 // Data Imports
 import { getProfileData } from '@/app/_template/server/actions'
 
-const ProfileTab = dynamic(() => import('@views/pages/user-profile/profile/index'))
-const TeamsTab = dynamic(() => import('@views/pages/user-profile/teams/index'))
-const ProjectsTab = dynamic(() => import('@views/pages/user-profile/projects/index'))
-const ConnectionsTab = dynamic(() => import('@views/pages/user-profile/connections/index'))
+const ProfileTab = dynamic(() => import('@/views/_template/pages/user-profile/profile/index'))
+const TeamsTab = dynamic(() => import('@/views/_template/pages/user-profile/teams/index'))
+const ProjectsTab = dynamic(() => import('@/views/_template/pages/user-profile/projects/index'))
+const ConnectionsTab = dynamic(() => import('@/views/_template/pages/user-profile/connections/index'))
 
 // Vars
 const tabContentList = (data?: Data): { [key: string]: ReactElement } => ({

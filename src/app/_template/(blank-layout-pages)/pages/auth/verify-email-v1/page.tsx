@@ -1,5 +1,5 @@
 // Component Imports
-import VerifyEmailV1 from '@views/pages/auth/VerifyEmailV1'
+import VerifyEmailV1 from '@/views/_template/pages/auth/VerifyEmailV1'
 
 // Server Action Imports
 import { getServerMode } from '@core/utils/serverHelpers'

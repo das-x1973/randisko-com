@@ -1,5 +1,5 @@
 // Component Imports
-import PricingWrapper from '@/views/front-pages/pricing'
+import PricingWrapper from '@/views/_template/front-pages/pricing'
 
 // Data Imports
 import { getPricingData } from '@/app/_template/server/actions'

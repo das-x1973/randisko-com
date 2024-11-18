@@ -11,17 +11,17 @@ import Grid from '@mui/material/Grid'
 import type { PricingPlanType } from '@/types/pages/pricingTypes'
 
 // Component Imports
-import UserLeftOverview from '@views/apps/user/view/user-left-overview'
-import UserRight from '@views/apps/user/view/user-right'
+import UserLeftOverview from '@/views/_template/apps/user/view/user-left-overview'
+import UserRight from '@/views/_template/apps/user/view/user-right'
 
 // Data Imports
 import { getPricingData } from '@/app/_template/server/actions'
 
-const OverViewTab = dynamic(() => import('@views/apps/user/view/user-right/overview'))
-const SecurityTab = dynamic(() => import('@views/apps/user/view/user-right/security'))
-const BillingPlans = dynamic(() => import('@views/apps/user/view/user-right/billing-plans'))
-const NotificationsTab = dynamic(() => import('@views/apps/user/view/user-right/notifications'))
-const ConnectionsTab = dynamic(() => import('@views/apps/user/view/user-right/connections'))
+const OverViewTab = dynamic(() => import('@/views/_template/apps/user/view/user-right/overview'))
+const SecurityTab = dynamic(() => import('@/views/_template/apps/user/view/user-right/security'))
+const BillingPlans = dynamic(() => import('@/views/_template/apps/user/view/user-right/billing-plans'))
+const NotificationsTab = dynamic(() => import('@/views/_template/apps/user/view/user-right/notifications'))
+const ConnectionsTab = dynamic(() => import('@/views/_template/apps/user/view/user-right/connections'))
 
 // Vars
 const tabContentList = (data?: PricingPlanType[]): { [key: string]: ReactElement } => ({

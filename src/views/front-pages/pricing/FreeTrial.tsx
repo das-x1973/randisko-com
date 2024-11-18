@@ -1,3 +1,6 @@
+// src/views/randisko/front-pages/pricing/FreeTrial.tsx
+
+
 // Next Imports
 import Link from 'next/link'
 

@@ -2,8 +2,8 @@
 import Grid from '@mui/material/Grid'
 
 // Component Imports
-import ProductListTable from '@views/apps/ecommerce/products/list/ProductListTable'
-import ProductCard from '@views/apps/ecommerce/products/list/ProductCard'
+import ProductListTable from '@/views/_template/apps/ecommerce/products/list/ProductListTable'
+import ProductCard from '@/views/_template/apps/ecommerce/products/list/ProductCard'
 
 // Data Imports
 import { getEcommerceData } from '@/app/_template/server/actions'

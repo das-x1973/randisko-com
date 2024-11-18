@@ -1,5 +1,5 @@
 // Component Imports
-import InvoiceList from '@views/apps/invoice/list'
+import InvoiceList from '@/views/_template/apps/invoice/list'
 
 // Data Imports
 import { getInvoiceData } from '@/app/_template/server/actions'

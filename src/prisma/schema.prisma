@@ -13,202 +13,268 @@ generator client {
 }
 
 model Account {
-  id                 String  @id @default(cuid())
-  userId             String  @map("user_id")
-  type               String
-  provider           String
-  providerAccountId  String  @map("provider_account_id")
-  refresh_token      String? @db.Text
-  access_token       String? @db.Text
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String? @db.Text
-  session_state      String?
+  id                String  @id @default(cuid()) // Unique identifier for the account
+  userId            String  @map("user_id") // ID of the user associated with this account
+  type              String // Type of account (e.g., OAuth, local)
+  provider          String // The service provider (e.g., Google, Facebook)
+  providerAccountId String  @map("provider_account_id") // The unique ID provided by the authentication provider
+  refresh_token     String? @db.Text // Refresh token for the account
+  access_token      String? @db.Text // Access token for the account
+  expires_at        Int? // Expiration time for the access token
+  token_type        String? // Type of token (e.g., Bearer)
+  scope             String? // Scope of access granted by the token
+  id_token          String? @db.Text // ID token for the account
+  session_state     String? // Session state information
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade) // Relation to the User model
 
-  @@unique([provider, providerAccountId])
-  @@map("accounts")
+  @@unique([provider, providerAccountId]) // Unique constraint for provider and providerAccountId
+  @@map("accounts") // Maps to the "accounts" table in the database
 }
 
 model Session {
-  id           String   @id @default(cuid())
-  sessionToken String   @unique @map("session_token")
-  userId       String   @map("user_id")
-  expires      DateTime
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id           String   @id @default(cuid()) // Unique identifier for the session
+  sessionToken String   @unique @map("session_token") // Unique session token
+  userId       String   @map("user_id") // ID of the user associated with this session
+  expires      DateTime // Expiration date of the session
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade) // Relation to the User model
 
-  @@map("sessions")
+  @@map("sessions") // Maps to the "sessions" table in the database
 }
 
 model VerificationToken {
-  identifier String
-  token      String
-  expires    DateTime
+  identifier String // Identifier for the verification token (e.g., email)
+  token      String // The verification token itself
+  expires    DateTime // Expiration date of the token
 
-  @@unique([identifier, token])
-  @@map("verification_tokens")
+  @@unique([identifier, token]) // Unique constraint for identifier and token
+  @@map("verification_tokens") // Maps to the "verification_tokens" table in the database
 }
-
-model CompanyInfo {
-  id              String   @id @default(cuid())
-  name            String
-  legalName       String
-  street          String
-  city            String
-  postcode        String
-  country         String
-  emailGeneral    String
-  emailPrivacy    String
-  emailLegal      String
-  phone           String
-  registrationNo  String
-  vatId           String
-  socialFacebook  String?
-  socialInstagram String?
-  socialTwitter   String?
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @default(now()) @updatedAt
-}
-
-model LegalDocument {
-  id          String    @id @default(cuid())
-  type        String    // "privacy", "terms", "pricing"
-  region      String    // Country code like "UK", "IE", "AU", etc.
-  language    String    // Language code like "en", "es", etc.
-  version     Int
-  title       String
-  content     Json
-  isActive    Boolean   @default(false)
-  publishedAt DateTime?
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @default(now()) @updatedAt
-  authorId    String?
-
-  @@index([type, region, isActive])
-  @@index([version])
-}
-
 
 model User {
-  id                 String                    @id @default(cuid())
-  name               String?
-  email              String?                   @unique
-  emailVerified      DateTime?                 @map("email_verified")
-  image              String?
-  role               String?                   @default("user")
-  accounts           Account[]
-  sessions           Session[]
-  profile            UserProfile?
-  images             UserImage[]
-  matchesInitiated   Match[]                   @relation("UserMatches1")
-  matchesReceived    Match[]                   @relation("UserMatches2")
-  conversations      ConversationParticipant[]
-  messages           Message[]
-  activities         UserActivity[]
-  isActive           Boolean                   @default(true)
-  lastLoginAt        DateTime?
-  createdAt          DateTime                  @default(now())
-  updatedAt          DateTime                  @default(now()) @updatedAt
+  id                String                    @id @default(cuid()) // Unique identifier for the user
+  name              String? // User's name
+  email             String?                   @unique // User's email address
+  emailVerified     DateTime?                 @map("email_verified") // Date when the user's email was verified
+  image             String? // URL of the user's profile image
+  role              String?                   @default("user") // User's role (e.g., user, admin)
+  accounts          Account[] // List of accounts linked to the user
+  sessions          Session[] // List of sessions for the user
+  profile           UserProfile? // User profile information
+  images            UserImage[] // List of images uploaded by the user
+  videos            UserVideo[] // List of videos uploaded by the user
+  matchesInitiated  Match[]                   @relation("UserMatches1") // Matches initiated by the user
+  matchesReceived   Match[]                   @relation("UserMatches2") // Matches received by the user
+  conversations     ConversationParticipant[] // List of conversations the user is participating in
+  messages          Message[] // Messages sent by the user
+  activities        UserActivity[] // User's activity history
+  interests         UserInterest[] // List of interests associated with the user
+  badges            UserBadge[] // List of badges awarded to the user
+  groups            GroupMember[] // Groups the user is a member of
+  events            EventParticipant[] // Events the user is participating in
+  privacySettings   UserPrivacySetting? // Privacy settings for the user
+  speedDatingEvents SpeedDatingEvent[] // Speed dating events the user is participating in
+  isActive          Boolean                   @default(true) // Whether the user is active
+  lastLoginAt       DateTime? // Last login date of the user
+  createdAt         DateTime                  @default(now()) // Creation date of the user record
+  updatedAt         DateTime                  @default(now()) @updatedAt // Last update date of the user record
 
-  @@map("users")
-  @@index([email])
-  @@index([role])
+  @@index([email]) // Index on the email field
+  @@index([role]) // Index on the role field
+  @@map("users") // Maps to the "users" table in the database
 }
 
 model UserActivity {
-  id        String   @id @default(cuid())
-  userId    String
-  type      String   // SIGN_IN, USER_CREATED, ACCOUNT_LINKED, etc.
-  provider  String
-  isNewUser Boolean  @default(false)
-  metadata  Json?    // For additional data
-  createdAt DateTime @default(now())
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id        String   @id @default(cuid()) // Unique identifier for the user activity
+  userId    String // ID of the user associated with this activity
+  type      String // Type of activity (e.g., SIGN_IN, USER_CREATED)
+  provider  String // Provider involved in the activity (e.g., Google, Facebook)
+  isNewUser Boolean  @default(false) // Whether the user is new
+  metadata  Json? // Additional metadata for the activity
+  createdAt DateTime @default(now()) // Creation date of the activity
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade) // Relation to the User model
 
-  @@index([userId])
-  @@index([type])
-  @@index([createdAt])
+  @@index([userId]) // Index on the userId field
+  @@index([type]) // Index on the type field
+  @@index([createdAt]) // Index on the createdAt field
 }
 
 model UserProfile {
-  id                    String   @id @default(cuid())
-  userId                String   @unique
-  nick                  String?
-  image                 String?
-  gender                String?
-  interested_in         String?
-  bio                   String?  @db.Text
-  location              String?
-  latitude              Float?
-  longitude             Float?
-  matching_radius       Int?
-  wizard_step_completed Int?
-  status                String?  @default("active")
-  has_logged_in         Boolean  @default(false)
-  lastActive            DateTime?
-  preferences           Json?
-  createdAt             DateTime @default(now())
-  updatedAt             DateTime @default(now()) @updatedAt
-  user                  User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id                    String    @id @default(cuid()) // Unique identifier for the user profile
+  userId                String    @unique // ID of the user associated with this profile
+  nick                  String? // User's nickname
+  image                 String? // URL of the user's profile image
+  gender                String? // User's gender
+  interested_in         String? // The gender(s) the user is interested in
+  bio                   String?   @db.Text // User's biography
+  location              String? // User's location as a string (e.g., city, country)
+  latitude              Float? // Latitude of the user's location
+  longitude             Float? // Longitude of the user's location
+  matching_radius       Int? // Radius for matching users in kilometers
+  wizard_step_completed Int? // Last completed step in the user onboarding wizard
+  status                String?   @default("active") // Status of the profile (e.g., active, inactive)
+  has_logged_in         Boolean   @default(false) // Whether the user has logged in at least once
+  lastActive            DateTime? // Last active date of the user
+  preferences           Json? // User's preferences for matching (e.g., age range)
+  completionProgress    Int       @default(0) // Profile completion progress percentage (0-100%)
+  relationshipGoals     String? // User's relationship goals (e.g., friendship, long-term)
+  lifestyle             Json? // Lifestyle information (e.g., smoking, drinking habits)
+  personality           Json? // Personality traits or responses to personality prompts
+  privacyLevel          String?   @default("medium") // General privacy level (low, medium, high)
+  createdAt             DateTime  @default(now()) // Creation date of the profile
+  updatedAt             DateTime  @default(now()) @updatedAt // Last update date of the profile
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade) // Relation to the User model
 
-  @@index([status])
-  @@index([location])
+  @@index([status]) // Index on the status field
+  @@index([location]) // Index on the location field
 }
 
 model UserImage {
-  id        String   @id @default(cuid())
-  url       String
-  userId    String
-  isPrimary Boolean  @default(false)
-  createdAt DateTime @default(now())
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id        String   @id @default(cuid()) // Unique identifier for the user image
+  url       String // URL of the image
+  userId    String // ID of the user who uploaded the image
+  isPrimary Boolean  @default(false) // Whether the image is the primary profile picture
+  isPrivate Boolean  @default(false) // Whether the image is private or public
+  createdAt DateTime @default(now()) // Creation date of the image
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade) // Relation to the User model
 
-  @@index([userId])
+  @@index([userId]) // Index on the userId field
+}
+
+model UserVideo {
+  id        String   @id @default(cuid()) // Unique identifier for the user video
+  url       String // URL of the video
+  userId    String // ID of the user who uploaded the video
+  isPrimary Boolean  @default(false) // Whether the video is the primary profile video
+  isPrivate Boolean  @default(false) // Whether the video is private or public
+  createdAt DateTime @default(now()) // Creation date of the video
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade) // Relation to the User model
+
+  @@index([userId]) // Index on the userId field
+}
+
+model UserInterest {
+  id        String   @id @default(cuid()) // Unique identifier for the user interest
+  userId    String // ID of the user associated with this interest
+  interest  String // The specific interest of the user (e.g., hiking, cooking)
+  createdAt DateTime @default(now()) // Creation date of the interest record
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade) // Relation to the User model
+
+  @@index([userId]) // Index on the userId field
+  @@index([interest]) // Index on the interest field
+}
+
+model UserBadge {
+  id        String   @id @default(cuid()) // Unique identifier for the user badge
+  userId    String // ID of the user who earned the badge
+  badge     String // Name or type of the badge
+  awardedAt DateTime @default(now()) // Date when the badge was awarded
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade) // Relation to the User model
+
+  @@index([userId]) // Index on the userId field
+  @@index([badge]) // Index on the badge field
+}
+
+model GroupMember {
+  id       String   @id @default(cuid()) // Unique identifier for the group membership
+  userId   String // ID of the user who is a member of the group
+  groupId  String // ID of the group the user is a member of
+  joinedAt DateTime @default(now()) // Date when the user joined the group
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade) // Relation to the User model
+  group    Group    @relation(fields: [groupId], references: [id], onDelete: Cascade) // Relation to the Group model
+
+  @@index([userId]) // Index on the userId field
+  @@index([groupId]) // Index on the groupId field
+}
+
+model Group {
+  id          String        @id @default(cuid()) // Unique identifier for the group
+  name        String // Name of the group
+  description String? // Description of the group
+  createdAt   DateTime      @default(now()) // Creation date of the group
+  members     GroupMember[] // List of members in the group
+}
+
+model EventParticipant {
+  id       String   @id @default(cuid()) // Unique identifier for the event participant
+  userId   String // ID of the user participating in the event
+  eventId  String // ID of the event
+  joinedAt DateTime @default(now()) // Date when the user joined the event
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade) // Relation to the User model
+  event    Event    @relation(fields: [eventId], references: [id], onDelete: Cascade) // Relation to the Event model
+
+  @@index([userId]) // Index on the userId field
+  @@index([eventId]) // Index on the eventId field
+}
+
+model Event {
+  id           String             @id @default(cuid()) // Unique identifier for the event
+  name         String // Name of the event
+  description  String? // Description of the event
+  date         DateTime // Date and time of the event
+  location     String? // Location of the event
+  participants EventParticipant[] // List of participants in the event
+}
+
+model UserPrivacySetting {
+  id      String @id @default(cuid()) // Unique identifier for the privacy setting
+  userId  String @unique // ID of the user associated with this privacy setting
+  setting Json // Privacy settings in JSON format
+  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade) // Relation to the User model
+}
+
+model SpeedDatingEvent {
+  id       String   @id @default(cuid()) // Unique identifier for the speed dating event
+  name     String // Name of the speed dating event
+  date     DateTime // Date and time of the event
+  location String? // Location of the speed dating event
+  userId   String // ID of the user participating in the event
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade) // Relation to the User model
+
+  @@index([userId]) // Index on the userId field
 }
 
 model Match {
-  id           String @id @default(cuid())
-  initiatorId  String
-  receiverId   String
-  status       String
-  matchedAt    DateTime?
-  initiator    User   @relation("UserMatches1", fields: [initiatorId], references: [id], onDelete: Cascade)
-  receiver     User   @relation("UserMatches2", fields: [receiverId], references: [id], onDelete: Cascade)
+  id          String    @id @default(cuid()) // Unique identifier for the match
+  initiatorId String // ID of the user who initiated the match
+  receiverId  String // ID of the user who received the match
+  status      String // Status of the match (e.g., pending, accepted, rejected)
+  matchedAt   DateTime? // Date when the match was made
+  initiator   User      @relation("UserMatches1", fields: [initiatorId], references: [id], onDelete: Cascade) // Relation to the initiating user
+  receiver    User      @relation("UserMatches2", fields: [receiverId], references: [id], onDelete: Cascade) // Relation to the receiving user
 
-  @@index([initiatorId])
-  @@index([receiverId])
+  @@index([initiatorId]) // Index on the initiatorId field
+  @@index([receiverId]) // Index on the receiverId field
 }
 
 model ConversationParticipant {
-  id             String       @id @default(cuid())
-  userId         String
-  conversationId String
-  joinedAt       DateTime     @default(now())
-  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
-  conversation   Conversation  @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  id             String       @id @default(cuid()) // Unique identifier for the conversation participant
+  userId         String // ID of the user participating in the conversation
+  conversationId String // ID of the conversation
+  joinedAt       DateTime     @default(now()) // Date when the user joined the conversation
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade) // Relation to the User model
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade) // Relation to the Conversation model
 
-  @@index([userId])
-  @@index([conversationId])
+  @@index([userId]) // Index on the userId field
+  @@index([conversationId]) // Index on the conversationId field
 }
 
 model Message {
-  id              String        @id @default(cuid())
-  conversationId  String
-  senderId        String
-  content         String        @db.Text
-  sentAt          DateTime      @default(now())
-  conversation    Conversation  @relation(fields: [conversationId], references: [id], onDelete: Cascade)
-  sender          User          @relation(fields: [senderId], references: [id], onDelete: Cascade)
+  id             String       @id @default(cuid()) // Unique identifier for the message
+  conversationId String // ID of the conversation the message belongs to
+  senderId       String // ID of the user who sent the message
+  content        String       @db.Text // Content of the message
+  sentAt         DateTime     @default(now()) // Date when the message was sent
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade) // Relation to the Conversation model
+  sender         User         @relation(fields: [senderId], references: [id], onDelete: Cascade) // Relation to the User model
 
-  @@index([conversationId])
-  @@index([senderId])
+  @@index([conversationId]) // Index on the conversationId field
+  @@index([senderId]) // Index on the senderId field
 }
 
 model Conversation {
-  id            String                   @id @default(cuid())
-  startedAt     DateTime                 @default(now())
-  messages      Message[]
-  participants  ConversationParticipant[]
+  id           String                    @id @default(cuid()) // Unique identifier for the conversation
+  startedAt    DateTime                  @default(now()) // Date when the conversation started
+  messages     Message[] // List of messages in the conversation
+  participants ConversationParticipant[] // List of participants in the conversation
 }

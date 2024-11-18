@@ -1,8 +1,12 @@
-// src/views/front-pages/landing-page/index.tsx
+// src/views/randisko/front-pages/landing-page/index.tsx
+
 'use client'
 
 // React Imports
 import { useEffect } from 'react'
+
+// Next Imports
+import Link from 'next/link'
 
 // MUI Imports
 import { Box, Button, Container, Typography, Grid, useTheme } from '@mui/material'
@@ -75,21 +79,22 @@ const LandingPageWrapper = ({ mode }: { mode: Mode }) => {
             mx: 'auto'
           }}
         >
-          Join a community of conscious individuals seeking authentic relationships rooted
-          in personal growth and well-being
+          Love is patient, love is kind, but let&rsquo;s be honest, it doesn&rsquo;t hurt to give it a little nudge in the right direction. Join a community of conscious individuals seeking authentic relationships rooted in personal growth and well-being.
         </Typography>
-        <Button
-          variant="contained"
-          color="primary"
-          size="large"
-          sx={{
-            px: 6,
-            py: 2,
-            fontSize: '1rem'
-          }}
-        >
-          Start Your Mindful Journey
-        </Button>
+        <Link href="/register" passHref>
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            sx={{
+              px: 6,
+              py: 2,
+              fontSize: '1rem'
+            }}
+          >
+            Start Your Mindful Journey
+          </Button>
+        </Link>
       </Container>
 
       {/* Value Props Section */}
@@ -166,26 +171,29 @@ const LandingPageWrapper = ({ mode }: { mode: Mode }) => {
             mx: 'auto'
           }}
         >
-          Join Randisko today and discover meaningful connections with people
-          who share your values and commitment to personal growth.
+          Finding love can feel like an adventure, but it doesn&rsquo;t have to feel like a wild goose chase. Join Randisko today and discover meaningful connections with people who share your values and commitment to personal growth.
         </Typography>
         <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center' }}>
-          <Button
-            variant="contained"
-            color="primary"
-            size="large"
-            sx={{ px: 4, py: 1.5 }}
-          >
-            Create Your Profile
-          </Button>
-          <Button
-            variant="outlined"
-            color="primary"
-            size="large"
-            sx={{ px: 4, py: 1.5 }}
-          >
-            Learn More
-          </Button>
+          <Link href="/register" passHref>
+            <Button
+              variant="contained"
+              color="primary"
+              size="large"
+              sx={{ px: 4, py: 1.5 }}
+            >
+              Create Your Profile
+            </Button>
+          </Link>
+          <Link href="/pricing" passHref>
+            <Button
+              variant="outlined"
+              color="primary"
+              size="large"
+              sx={{ px: 4, py: 1.5 }}
+            >
+              Learn More
+            </Button>
+          </Link>
         </Box>
       </Container>
     </StyledBox>

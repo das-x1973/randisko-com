@@ -1,5 +1,5 @@
 // Component Imports
-import Questions from '@views/front-pages/help-center/Questions'
+import Questions from '@/views/_template/front-pages/help-center/Questions'
 
 const Article = () => {
   return <Questions />

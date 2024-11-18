@@ -65,5 +65,8 @@
     "stylis",
     "tanstack",
     "toastify"
-  ]
+  ],
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  }
 }

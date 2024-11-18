@@ -2,13 +2,13 @@
 import Grid from '@mui/material/Grid'
 
 // Component Imports
-import WelcomeCard from '@views/apps/academy/dashboard/WelcomeCard'
-import InterestedTopics from '@views/apps/academy/dashboard/InterestedTopics'
-import PopularInstructors from '@views/apps/academy/dashboard/PopularInstructors'
-import TopCourses from '@views/apps/academy/dashboard/TopCourses'
-import UpcomingWebinar from '@views/apps/academy/dashboard/UpcomingWebinar'
-import AssignmentProgress from '@views/apps/academy/dashboard/AssignmentProgress'
-import CourseTable from '@views/apps/academy/dashboard/CourseTable'
+import WelcomeCard from '@/views/_template/apps/academy/dashboard/WelcomeCard'
+import InterestedTopics from '@/views/_template/apps/academy/dashboard/InterestedTopics'
+import PopularInstructors from '@/views/_template/apps/academy/dashboard/PopularInstructors'
+import TopCourses from '@/views/_template/apps/academy/dashboard/TopCourses'
+import UpcomingWebinar from '@/views/_template/apps/academy/dashboard/UpcomingWebinar'
+import AssignmentProgress from '@/views/_template/apps/academy/dashboard/AssignmentProgress'
+import CourseTable from '@/views/_template/apps/academy/dashboard/CourseTable'
 
 // Data Imports
 import { getAcademyData } from '@/app/_template/server/actions'

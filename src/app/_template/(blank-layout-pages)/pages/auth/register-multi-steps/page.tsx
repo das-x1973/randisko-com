@@ -1,5 +1,5 @@
 // Component Imports
-import RegisterMultiSteps from '@views/pages/auth/register-multi-steps'
+import RegisterMultiSteps from '@/views/_template/pages/auth/register-multi-steps'
 
 const RegisterMultiStepsPage = () => {
   return <RegisterMultiSteps />
