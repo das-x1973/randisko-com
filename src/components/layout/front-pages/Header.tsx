@@ -1,3 +1,6 @@
+// src/components/layout/front-pages/Header.tsx
+
+
 'use client'
 
 // React Imports

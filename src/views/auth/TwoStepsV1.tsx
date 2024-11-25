@@ -17,7 +17,6 @@ import type { Mode } from '@core/types'
 import Form from '@components/Form'
 import Link from '@components/Link'
 import Illustrations from '@components/Illustrations'
-import Logo from '@components/layout/shared/Logo'
 
 // Hook Imports
 import { useImageVariant } from '@core/hooks/useImageVariant'
@@ -35,9 +34,6 @@ const TwoStepsV1 = ({ mode }: { mode: Mode }) => {
     <div className='flex flex-col justify-center items-center min-bs-[100dvh] relative p-6'>
       <Card className='flex flex-col sm:is-[450px]'>
         <CardContent className='p-6 sm:!p-12'>
-          <Link href={'/'} className='flex justify-center items-center mbe-6'>
-            <Logo />
-          </Link>
           <div className='flex flex-col gap-5'>
             <div className='flex flex-col gap-1'>
               <Typography variant='h4'>Two Step Verification 💬</Typography>

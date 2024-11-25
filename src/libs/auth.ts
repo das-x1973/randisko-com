@@ -7,6 +7,7 @@ import type { NextAuthOptions, Account, Profile } from 'next-auth'
 import type { Adapter } from 'next-auth/adapters'
 
 import { prisma } from '@/libs/prisma'
+import { findOrCreateUser } from '@/app/actions/userActions';
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma) as Adapter,
@@ -38,57 +39,28 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async signIn({ user, account }) {
-      const email = user?.email ?? undefined
-      if (!email) {
-        console.error('No email provided by', account?.provider)
-        return false
-      }
+      try {
+        if (!user?.email) {
+          throw new Error('No email provided by the provider');
+        }
 
-      // Find an existing user with the same email
-      const existingUser = await prisma.user.findUnique({ where: { email } })
-      if (existingUser && account) {
-        // Link this OAuth account to the existing user
-        await prisma.account.upsert({
-          where: {
-            provider_providerAccountId: { provider: account.provider, providerAccountId: account.providerAccountId }
-          },
-          create: {
-            userId: existingUser.id,
-            provider: account.provider,
-            providerAccountId: account.providerAccountId,
-            type: 'oauth', // Add type property (e.g., 'oauth' for social providers)
-            access_token: account.access_token,
-            refresh_token: account.refresh_token,
-            expires_at: account.expires_at,
-            token_type: account.token_type,
-            scope: account.scope,
-            id_token: account.id_token,
-            session_state: account.session_state
-          },
-          update: {}
-        })
-        return true
-      }
+        const registeredUser = await findOrCreateUser(user.email, account);
 
-      // If no existing user, proceed with creating a new user
-      return true
+        if (!registeredUser) {
+          throw new Error('User registration or retrieval failed');
+        }
+
+        // Check if onboarding is complete
+        if (registeredUser.profile?.isOnboarded) {
+          return '/dashboard';
+        } else {
+          return '/onboarding';
+        }
+      } catch (error) {
+        console.error('Error in signIn callback:', error);
+        return false;
+      }
     },
-    
-    async session({ session, token }) {
-      if (session?.user) {
-        session.user.id = token.sub as string
-        session.user.role = token.role as string | undefined
-      }
-      return session
-    },
-
-    async jwt({ token, user }) {
-      if (user) {
-        token.id = user.id
-        token.role = user.role
-      }
-      return token
-    }
   },
 
   session: {

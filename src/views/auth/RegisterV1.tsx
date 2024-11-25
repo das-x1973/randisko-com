@@ -32,7 +32,6 @@ import CircularProgress from '@mui/material/CircularProgress'
 import type { Mode } from '@core/types'
 
 // Component Imports
-import Logo from '@components/layout/shared/Logo'
 import Illustrations from '@components/Illustrations'
 
 // Hook Imports
@@ -87,12 +86,6 @@ const RegisterV1 = ({ mode }: { mode: Mode }) => {
     <div className='flex flex-col justify-center items-center min-bs-[100dvh] relative p-6'>
       <Card className='flex flex-col sm:is-[450px]'>
         <CardContent className='p-6 sm:!p-12'>
-          <Link
-            href={'/'}
-            className='absolute block-start-5 sm:block-start-[38px] inline-start-6 sm:inline-start-[38px]'
-          >
-            <Logo />
-          </Link>
           <div className='flex flex-col gap-5'>
             <div>
               <Typography variant='h4' align='center'>

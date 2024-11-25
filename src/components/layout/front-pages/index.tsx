@@ -1,3 +1,6 @@
+// src/components/layout/front-pages/index.tsx
+
+
 // Type Imports
 import type { ChildrenType } from '@core/types'
 
@@ -25,3 +28,5 @@ const FrontLayout = ({ children }: ChildrenType) => {
 }
 
 export default FrontLayout
+
+

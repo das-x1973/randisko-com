@@ -23,7 +23,6 @@ import type { Mode } from '@core/types'
 
 // Component Imports
 import DirectionalIcon from '@components/DirectionalIcon'
-import Logo from '@components/layout/shared/Logo'
 import Illustrations from '@components/Illustrations'
 
 // Hook Imports
@@ -50,9 +49,6 @@ const ResetPasswordV1 = ({ mode }: { mode: Mode }) => {
     <div className='flex flex-col justify-center items-center min-bs-[100dvh] relative p-6'>
       <Card className='flex flex-col sm:is-[450px]'>
         <CardContent className='p-6 sm:!p-12'>
-          <Link href={'/'} className='flex justify-center items-center mbe-6'>
-            <Logo />
-          </Link>
           <Typography variant='h4'>Reset Password 🔒</Typography>
           <div className='flex flex-col gap-5'>
             <Typography className='mbs-1'>

@@ -2,9 +2,13 @@
 
 // Next Imports
 import type { Metadata } from 'next'
+import { redirect } from 'next/navigation'
 
 // MUI Imports
 import Typography from '@mui/material/Typography'
+
+// Server Action Import
+import { getUserById } from '@/app/actions/userActions'
 
 // Metadata for SEO and Social Media
 export const metadata: Metadata = {
@@ -22,7 +26,18 @@ export const metadata: Metadata = {
   }
 }
 
-const Dashboard = () => {
+const Dashboard = async () => {
+  // Retrieve user ID from the session (replace with actual session retrieval)
+  const userId = 'your_session_user_id_here'; // You'll need to replace this line with proper session management
+
+  // Check if user is onboarded
+  if (userId) {
+    const user = await getUserById(userId);
+    if (user && !user.profile?.isOnboarded) {
+      redirect('/onboarding');
+    }
+  }
+
   return (
     <div style={{ textAlign: 'center', padding: '2rem' }}>
       <Typography variant="h4" gutterBottom>

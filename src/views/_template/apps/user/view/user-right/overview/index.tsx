@@ -7,7 +7,7 @@ import UserActivityTimeLine from './UserActivityTimeline'
 import InvoiceListTable from './InvoiceListTable'
 
 // Data Imports
-import { getInvoiceData } from '@/app/_template/server/actions'
+import { getInvoiceData } from '@/app/template/server/actions'
 
 /**
  * ! If you need data using an API call, uncomment the below API code, update the `process.env.API_URL` variable in the

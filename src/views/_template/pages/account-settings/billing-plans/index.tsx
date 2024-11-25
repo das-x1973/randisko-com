@@ -8,7 +8,7 @@ import PaymentMethod from './PaymentMethod'
 import InvoiceListTable from './InvoiceListTable'
 
 // Data Imports
-import { getPricingData, getInvoiceData } from '@/app/_template/server/actions'
+import { getPricingData, getInvoiceData } from '@/app/template/server/actions'
 
 /**
  * ! If you need data using an API call, uncomment the below API code, update the `process.env.API_URL` variable in the

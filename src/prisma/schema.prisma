@@ -102,6 +102,7 @@ model UserActivity {
 model UserProfile {
   id                    String    @id @default(cuid()) // Unique identifier for the user profile
   userId                String    @unique // ID of the user associated with this profile
+  isOnboarded           Boolean   @default(false) // Track if the user completed onboarding
   nick                  String? // User's nickname
   image                 String? // URL of the user's profile image
   gender                String? // User's gender

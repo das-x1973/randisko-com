@@ -1,3 +1,6 @@
+// src/components/GenerateMenu.tsx
+
+
 // React Imports
 import type { ReactNode } from 'react'
 
