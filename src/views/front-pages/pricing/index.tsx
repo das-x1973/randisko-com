@@ -30,7 +30,7 @@ const PricingWrapper = ({ data }: { data: PricingPlanType[] }) => {
 
   return (
     <>
-      <PricingSection data={data} />
+      {/* <PricingSection data={data} /> */}
       {/* <FreeTrial /> */}
       <Plans />
       <Faqs />

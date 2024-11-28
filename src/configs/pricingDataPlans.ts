@@ -15,9 +15,10 @@ export const pricingData = {
       yearlyPlan: { monthly: 0, annually: 0 },
       speedDatingPrice: 10,
       planBenefits: [
-        'Limited chat',
         'Founding Member badge for early adopters',
         'Access to speed dating',
+
+        // 'Limited chat',
       ]
     },
     {
@@ -33,13 +34,11 @@ export const pricingData = {
       yearlyPlan: { monthly: 4.5, annually: 54 },
       speedDatingPrice: 5,
       planBenefits: [
-        'Unlimited chat',
         'Founding Member badge for early adopters',
         'Access to speed dating',
-        'Ads free',
-        'Access to speed dating',
-        'Priority access to events',
         'Reduced speed dating cost',
+        'Unlimited chat (limited for Free plan)',
+        'Ads free',
         'Limited profile boosts',
       ]
     },
@@ -56,20 +55,16 @@ export const pricingData = {
       yearlyPlan: { monthly: 9, annually: 108 },
       speedDatingPrice: 5,
       planBenefits: [
-        'Unlimited chat',
         'Founding Member badge for early adopters',
         'Access to speed dating',
-        'Ads free',
-        'Access to speed dating',
-        'Priority access to events',
         'Reduced speed dating cost',
-        'Premium badge',
+        'Unlimited chat (limited for Free plan)',
+        'Ads free',
         'Limited profile boosts',
+        'Premium badge',
         'Advanced filters (e.g., interests, activities, relationship goals)',
-        'Access to all exclusive events',
+        'Priority access to all exclusive events',
         'Interest-based group chats and community activities',
-        'Priority access to events',
-        'Access to interest-based group chats'
       ]
     }
   ],
@@ -92,7 +87,7 @@ export const pricingData = {
     {
       id: "4",
       question: "What additional features does the Premium plan provide?",
-      answer: "The Premium plan is the full experience. It includes unlimited chat, no ads, premium badge, advanced filters to find exactly who you want, access to all exclusive events, and even priority access to events. Plus, you’ll get unlimited profile boosts to always stand out!"
+      answer: "The Premium plan is the full experience. It includes unlimited chat, no ads, premium badge, advanced filters to find exactly who you want, access to all exclusive events, and even priority access to events. Plus, you’ll get profile boosts to always stand out!"
     },
     {
       id: "5",

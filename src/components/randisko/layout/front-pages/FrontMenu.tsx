@@ -1,3 +1,5 @@
+// src/components/randisko/layout/front-pages/FrontMenu.tsx
+
 'use client'
 
 // React Imports

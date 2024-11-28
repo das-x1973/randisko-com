@@ -1,6 +1,6 @@
 // src/views/randisko/front-pages/pricing/Faqs.tsx
 
-import { pricingData } from '@/configs/pricingData'
+import { pricingData } from '@/configs/pricingDataCards'
 import Typography from '@mui/material/Typography'
 import Accordion from '@mui/material/Accordion'
 import AccordionSummary from '@mui/material/AccordionSummary'
@@ -16,7 +16,7 @@ const Faqs = () => {
         <Typography>Let us help answer the most common questions.</Typography>
       </div>
       <div>
-        {pricingData.faq.map((data) => (
+        {pricingData.faq.map(data => (
           <Accordion key={data.id}>
             <AccordionSummary aria-controls={`${data.id}-content`} id={`${data.id}-header`} className='font-medium'>
               {data.question}

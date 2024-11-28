@@ -7,15 +7,17 @@ import type { Metadata } from 'next'
 import PricingWrapper from '@/views/front-pages/pricing'
 
 // Import centralized pricing data directly for Phase 1
-import { pricingData } from '@/configs/pricingData'
+import { pricingData } from '@/configs/pricingDataCards'
 
 // Metadata for SEO and Social Media
 export const metadata: Metadata = {
   title: 'Pricing Plans | Randisko - Mindful Dating',
-  description: 'Explore Randisko’s pricing plans and choose the one that best fits your needs. Join our mindful dating community today.',
+  description:
+    'Explore Randisko’s pricing plans and choose the one that best fits your needs. Join our mindful dating community today.',
   openGraph: {
     title: 'Pricing Plans | Randisko',
-    description: 'Discover the pricing options available for our mindful dating community. Choose from Free, Basic, or Premium plans.',
+    description:
+      'Discover the pricing options available for our mindful dating community. Choose from Free, Basic, or Premium plans.',
     type: 'website'
   },
   twitter: {
