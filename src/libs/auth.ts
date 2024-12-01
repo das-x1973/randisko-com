@@ -38,29 +38,29 @@ export const authOptions: NextAuthOptions = {
     })
   ],
   callbacks: {
-    async signIn({ user, account }) {
-      try {
-        if (!user?.email) {
-          throw new Error('No email provided by the provider');
-        }
+    // async signIn({ user, account }) {
+    //   try {
+    //     if (!user?.email) {
+    //       throw new Error('No email provided by the provider');
+    //     }
 
-        const registeredUser = await findOrCreateUser(user.email, account);
+    //     const registeredUser = await findOrCreateUser(user.email, account);
 
-        if (!registeredUser) {
-          throw new Error('User registration or retrieval failed');
-        }
+    //     if (!registeredUser) {
+    //       throw new Error('User registration or retrieval failed');
+    //     }
 
-        // Check if onboarding is complete
-        if (registeredUser.profile?.isOnboarded) {
-          return '/dashboard';
-        } else {
-          return '/onboarding';
-        }
-      } catch (error) {
-        console.error('Error in signIn callback:', error);
-        return false;
-      }
-    },
+    //     // Check if onboarding is complete
+    //     if (registeredUser.profile?.isOnboarded) {
+    //       return '/dashboard';
+    //     } else {
+    //       return '/onboarding';
+    //     }
+    //   } catch (error) {
+    //     console.error('Error in signIn callback:', error);
+    //     return false;
+    //   }
+    // },
   },
 
   session: {
