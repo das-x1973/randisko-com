@@ -9,7 +9,6 @@ import type { Settings } from '@core/contexts/settingsContext'
 import type { SystemMode } from '@core/types'
 import coreTheme from '@core/theme'
 
-
 const inter = Inter({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700']
@@ -46,85 +45,42 @@ const mergedTheme = (settings: Settings, mode: SystemMode, direction: Theme['dir
       }
     },
     customShadows: {
-      xs: '0px 2px 4px rgba(45, 52, 64, 0.08)',
-      sm: '0px 4px 8px rgba(45, 52, 64, 0.12)',
-      md: '0px 6px 12px rgba(45, 52, 64, 0.15)',
-      lg: '0px 8px 16px rgba(45, 52, 64, 0.18)',
-      xl: '0px 12px 24px rgba(45, 52, 64, 0.22)'
-    },
-    mainColorChannels: {
-      light: '13 148 136',  // RGB values for primary.main
-      dark: '45 212 191',   // RGB values for a lighter variant in dark mode
-      lightShadow: '13 148 136',
-      darkShadow: '45 212 191'
-    },
-    components: {
-      MuiButton: {
-        styleOverrides: {
-          root: {
-            borderRadius: '8px',
-            padding: '0.75rem 1.5rem',
-            fontSize: '1rem',
-            textTransform: 'none'
-          },
-          contained: {
-            boxShadow: 'none',
-            '&:hover': {
-              boxShadow: 'none'
-            }
-          }
-        }
-      },
-      MuiCard: {
-        styleOverrides: {
-          root: {
-            borderRadius: '12px'
-          }
-        }
-      },
-      MuiContainer: {
-        styleOverrides: {
-          root: {
-            maxWidth: '1200px'
-          }
-        }
-      }
+      xs: '0px 2px 4px rgba(0, 0, 0, 0.05)',
+      sm: '0px 4px 8px rgba(0, 0, 0, 0.1)',
+      md: '0px 6px 12px rgba(0, 0, 0, 0.15)',
+      lg: '0px 8px 16px rgba(0, 0, 0, 0.2)',
+      xl: '0px 12px 24px rgba(0, 0, 0, 0.25)'
     },
     palette: {
       primary: {
-        light: '#4FD1C5',
-        main: '#0D9488',
-        dark: '#0F766E',
-        contrastText: '#FFFFFF',
-        lighterOpacity: 'rgba(13, 148, 136, 0.1)',
-        lightOpacity: 'rgba(13, 148, 136, 0.3)',
-        mainOpacity: 'rgba(13, 148, 136, 0.5)',
-        darkOpacity: 'rgba(13, 148, 136, 0.7)',
-        darkerOpacity: 'rgba(13, 148, 136, 0.9)'
+        light: '#92F887',
+        main: '#127807',
+        dark: '#106308',
+        contrastText: '#FFFFFF'
       },
       secondary: {
-        light: '#C4B5FD',
-        main: '#A78BFA',
-        dark: '#7C3AED',
-        contrastText: '#FFFFFF',
-        lighterOpacity: 'rgba(167, 139, 250, 0.1)',
-        lightOpacity: 'rgba(167, 139, 250, 0.3)',
-        mainOpacity: 'rgba(167, 139, 250, 0.5)',
-        darkOpacity: 'rgba(167, 139, 250, 0.7)',
-        darkerOpacity: 'rgba(167, 139, 250, 0.9)'
+        light: '#A2E49A',
+        main: '#22651B',
+        dark: '#165A14',
+        contrastText: '#FFFFFF'
+      },
+      accent: {
+        light: '#A4F79C',
+        main: '#106308',
+        dark: '#0E5207',
+        contrastText: '#FFFFFF'
+      },
+      text: {
+        primary: '#040316',
+        secondary: '#EAE9FC'
       },
       background: {
-        default: '#FAFAF9',
-        paper: '#FFFFFF'
+        default: mode === 'light' ? '#FCFCFC' : '#030303',
+        paper: mode === 'light' ? '#FFFFFF' : '#040404'
       },
       customColors: {
-        bodyBg: '#F8F8F1',
-        chatBg: '#F4F5FA',
-        greyLightBg: '#FAFAFA',
-        inputBorder: '#E5E7EB',
-        tableHeaderBg: '#F9FAFB',
-        tooltipText: '#FFFFFF',
-        trackBg: '#F4F5FA'
+        bodyBg: mode === 'light' ? '#F8F8F1' : '#030303',
+        chatBg: mode === 'light' ? '#F4F5FA' : '#040404'
       }
     }
   }

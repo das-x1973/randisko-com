@@ -1,8 +1,12 @@
 // src/app/(public)/(home)/page.tsx
 
+// Next.js Imports
 import type { Metadata } from 'next'
 
+// Component Imports
 import LandingPageWrapper from '@/views/front-pages/landing-page'
+
+// Server Action Imports
 import { getServerMode } from '@core/utils/serverHelpers'
 
 // Metadata for SEO and Social Media

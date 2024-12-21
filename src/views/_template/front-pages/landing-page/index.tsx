@@ -42,7 +42,7 @@ const LandingPageWrapper = ({ mode }: { mode: Mode }) => {
       <GetStarted />
       <ContactUs />
     </>
-    
+
   )
 }
 
