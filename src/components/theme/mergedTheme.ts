@@ -21,18 +21,18 @@ const mergedTheme = (settings: Settings, mode: SystemMode, direction: Theme['dir
       h1: {
         fontWeight: 300,
         fontSize: '3.5rem',
-        lineHeight: 1.2
+        lineHeight: 1.2,
       },
       h2: {
         fontWeight: 300,
         fontSize: '2.25rem',
-        lineHeight: 1.3
+        lineHeight: 1.3,
       },
       h3: {
         fontWeight: 500,
         fontSize: '1.5rem',
-        lineHeight: 1.4
-      }
+        lineHeight: 1.4,
+      },
     },
     shape: {
       borderRadius: 8,
@@ -41,51 +41,45 @@ const mergedTheme = (settings: Settings, mode: SystemMode, direction: Theme['dir
         sm: 8,
         md: 12,
         lg: 16,
-        xl: 20
-      }
+        xl: 20,
+      },
     },
     customShadows: {
       xs: '0px 2px 4px rgba(0, 0, 0, 0.05)',
       sm: '0px 4px 8px rgba(0, 0, 0, 0.1)',
       md: '0px 6px 12px rgba(0, 0, 0, 0.15)',
       lg: '0px 8px 16px rgba(0, 0, 0, 0.2)',
-      xl: '0px 12px 24px rgba(0, 0, 0, 0.25)'
+      xl: '0px 12px 24px rgba(0, 0, 0, 0.25)',
     },
     palette: {
       primary: {
-        light: '#92F887',
-        main: '#127807',
-        dark: '#106308',
-        contrastText: '#FFFFFF'
+        light: '#A4F79C', // Accent color light
+        main: '#106308',  // Accent color main
+        dark: '#0E5207',  // Accent color dark
+        contrastText: '#FFFFFF',
       },
       secondary: {
         light: '#A2E49A',
         main: '#22651B',
         dark: '#165A14',
-        contrastText: '#FFFFFF'
-      },
-      accent: {
-        light: '#A4F79C',
-        main: '#106308',
-        dark: '#0E5207',
-        contrastText: '#FFFFFF'
+        contrastText: '#FFFFFF',
       },
       text: {
-        primary: '#040316',
-        secondary: '#EAE9FC'
+        primary: mode === 'light' ? '#040316' : '#EAE9FC',
+        secondary: mode === 'light' ? '#5A5A5A' : '#B8B8D4', // Improved contrast for light mode
       },
       background: {
         default: mode === 'light' ? '#FCFCFC' : '#030303',
-        paper: mode === 'light' ? '#FFFFFF' : '#040404'
+        paper: mode === 'light' ? '#FFFFFF' : '#040404',
       },
       customColors: {
         bodyBg: mode === 'light' ? '#F8F8F1' : '#030303',
-        chatBg: mode === 'light' ? '#F4F5FA' : '#040404'
-      }
-    }
-  }
+        chatBg: mode === 'light' ? '#F4F5FA' : '#040404',
+      },
+    },
+  };
 
-  return deepmerge(coreTheme(settings, mode, direction), userTheme)
-}
+  return deepmerge(coreTheme(settings, mode, direction), userTheme);
+};
 
-export default mergedTheme
+export default mergedTheme;

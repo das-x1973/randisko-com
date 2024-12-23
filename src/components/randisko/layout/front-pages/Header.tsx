@@ -75,7 +75,7 @@ const Header = ({ mode }: { mode: Mode }) => {
               <CustomIconButton
                 component={Link}
                 variant='contained'
-                href='/auth/register'
+                href='/register'
                 color='primary'
               >
                 <i className='ri-user-add-line text-xl' />
@@ -84,7 +84,7 @@ const Header = ({ mode }: { mode: Mode }) => {
               <Button
                 component={Link}
                 variant='contained'
-                href='/auth/register'
+                href='/register'
                 startIcon={<i className='ri-user-add-line text-xl' />}
                 className='whitespace-nowrap'
               >

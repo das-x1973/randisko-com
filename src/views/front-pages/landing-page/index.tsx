@@ -1,4 +1,4 @@
-// src/views/randisko/front-pages/landing-page/index.tsx
+// src/views/front-pages/landing-page/index.tsx
 
 'use client'
 
@@ -163,3 +163,5 @@ const features = [
 ]
 
 export default LandingPageWrapper
+
+
