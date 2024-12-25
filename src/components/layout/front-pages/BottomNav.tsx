@@ -1,91 +1,79 @@
-'use client'
+// src/components/layout/front-pages/BottomNav.tsx
 
-// Next Imports
-import Link from 'next/link'
+"use client";
 
-// MUI Imports
-import BottomNavigation from '@mui/material/BottomNavigation'
-import BottomNavigationAction from '@mui/material/BottomNavigationAction'
-import Paper from '@mui/material/Paper'
-import { useTheme } from '@mui/material/styles'
+// React imports
+import React, { useState } from "react";
+
+// Next.js imports
+import { useRouter } from "next/navigation";
 
 // Type Imports
 import type { Mode } from '@core/types'
 
-// Component Imports
+// MUI imports
+import Box from "@mui/material/Box";
+import BottomNavigation from "@mui/material/BottomNavigation";
+import BottomNavigationAction from "@mui/material/BottomNavigationAction";
+
+// Custom Imports
+import ModeDropdown from "../shared/ModeDropdown";
 import Logo from '../shared/Logo'
-import ModeDropdown from '../shared/ModeDropdown'
 
-type BottomNavProps = {
-  mode: Mode // Accept mode as a prop
-}
+const BottomNav = ({ mode }: { mode: Mode }) => {
+  const [value, setValue] = useState("/");
+  const router = useRouter();
 
-const BottomNav = ({ mode }: BottomNavProps) => {
-  const theme = useTheme() // Access the current theme
+  const handleNavigation = (event: React.SyntheticEvent, newValue: string) => {
+    setValue(newValue);
+    router.push(newValue);
+  };
+
+  // Navigation paths
+  const navigationPaths = [
+    { label: "Home", value: "/" },
+    { label: "Login", value: "/login" },
+    { label: "Register", value: "/register" },
+  ];
 
   return (
-    <Paper
+    <Box
       sx={{
-        position: 'fixed',
+        width: "100%",
+        position: "fixed",
         bottom: 0,
-        left: 0,
-        right: 0,
+        backgroundColor: (theme) => theme.palette.background.paper,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        px: 2,
         zIndex: 10,
-        borderRadius: '12px 12px 0 0',
-        boxShadow: theme.shadows[3],
-        overflow: 'hidden',
-        backgroundColor: theme.palette.background.paper, // Dynamically use the theme's background color
+        borderTop: "1px solid",
+        borderColor: (theme) => theme.palette.divider,
       }}
-      elevation={3}
     >
-      <BottomNavigation showLabels sx={{ height: '64px' }}>
-        <BottomNavigationAction
-          label="Home"
-          component={Link}
-          href="/"
-          sx={{
-            textTransform: 'none',
-            fontWeight: 500,
-            color: theme.palette.text.primary, // Dynamically use the theme's text color
-            '&.Mui-selected': {
-              color: theme.palette.primary.main, // Use primary color for selected state
-              borderBottom: `2px solid ${theme.palette.primary.main}`,
-            },
-          }}
-        />
-        <BottomNavigationAction
-          label="Login"
-          component={Link}
-          href="/login"
-          sx={{
-            textTransform: 'none',
-            fontWeight: 500,
-            color: theme.palette.text.primary,
-            '&.Mui-selected': {
-              color: theme.palette.primary.main,
-              borderBottom: `2px solid ${theme.palette.primary.main}`,
-            },
-          }}
-        />
-        <BottomNavigationAction
-          label="Register now"
-          component={Link}
-          href="/register"
-          sx={{
-            textTransform: 'none',
-            fontWeight: 500,
-            color: theme.palette.text.primary,
-            '&.Mui-selected': {
-              color: theme.palette.primary.main,
-              borderBottom: `2px solid ${theme.palette.primary.main}`,
-            },
-          }}
-        />
-        <ModeDropdown />
+      {/* Navigation Section */}
+      <BottomNavigation
+        showLabels
+        value={value}
+        onChange={handleNavigation}
+        sx={{ flexGrow: 1 }}
+      >
+        {navigationPaths.map((path) => (
+          <BottomNavigationAction
+            key={path.value}
+            label={path.label}
+            value={path.value}
+          />
+        ))}
       </BottomNavigation>
 
-    </Paper>
-  )
-}
+      {/* Theme Toggle Section */}
+      <ModeDropdown />
+    </Box>
+  );
+};
+
 
 export default BottomNav
+

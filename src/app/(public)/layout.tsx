@@ -36,17 +36,13 @@ const Layout = ({ children }: ChildrenType) => {
   const direction = 'ltr'
 
   return (
-    <html id='__next' lang='en' dir={direction}>
-      <body className='flex is-full min-bs-full flex-auto flex-col'>
-        <Providers direction={direction}>
-          <BlankLayout systemMode={systemMode}>
-            <IntersectionProvider>
-              <FrontLayout>{children}</FrontLayout>
-            </IntersectionProvider>
-          </BlankLayout>
-        </Providers>
-      </body>
-    </html>
+    <Providers direction={direction}>
+      <BlankLayout systemMode={systemMode}>
+        <IntersectionProvider>
+          <FrontLayout>{children}</FrontLayout>
+        </IntersectionProvider>
+      </BlankLayout>
+    </Providers>
   )
 }
 
