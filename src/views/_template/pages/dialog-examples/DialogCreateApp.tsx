@@ -6,8 +6,8 @@ import Typography from '@mui/material/Typography'
 import type { ButtonProps } from '@mui/material/Button'
 
 // Component Imports
-import CreateApp from '@components/dialogs/create-app'
-import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
+import CreateApp from '@/components/_template/dialogs/create-app'
+import OpenDialogOnElementClick from '@/components/_template/dialogs/OpenDialogOnElementClick'
 
 const DialogCreateApp = () => {
   // Vars

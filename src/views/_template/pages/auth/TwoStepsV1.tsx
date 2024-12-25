@@ -14,7 +14,7 @@ import type { Mode } from '@core/types'
 import Form from '@components/Form'
 import Link from '@components/Link'
 import Illustrations from '@components/Illustrations'
-import Logo from '@components/layout/shared/Logo'
+import Logo from '@/components/_template/layout/shared/Logo'
 
 // Hook Imports
 import { useImageVariant } from '@core/hooks/useImageVariant'

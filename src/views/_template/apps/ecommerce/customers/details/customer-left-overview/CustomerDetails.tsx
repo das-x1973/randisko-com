@@ -12,8 +12,8 @@ import type { Customer } from '@/types/apps/ecommerceTypes'
 
 // Component Imports
 import CustomAvatar from '@core/components/mui/Avatar'
-import EditUserInfo from '@components/dialogs/edit-user-info'
-import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
+import EditUserInfo from '@/components/_template/dialogs/edit-user-info'
+import OpenDialogOnElementClick from '@/components/_template/dialogs/OpenDialogOnElementClick'
 
 const CustomerDetails = ({ customerData }: { customerData?: Customer }) => {
   // Vars

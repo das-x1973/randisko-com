@@ -7,13 +7,14 @@
 import { useState } from 'react'
 
 // Next Imports
-import Link from 'next/link'
+// import Link from 'next/link'
 import { useParams, useRouter } from 'next/navigation'
 
 // NextAuth Imports
 import { signIn } from 'next-auth/react'
 
 // MUI Imports
+import Link from '@mui/material/Link'
 import Alert from '@mui/material/Alert'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
@@ -78,16 +79,16 @@ const LoginV1 = ({ mode }: { mode: Mode }) => {
 
   return (
     <div className='flex flex-col justify-center items-center min-bs-[100dvh] relative p-6'>
-      <Card className='flex flex-col sm:is-[450px]'>
+      {/* <Card className='flex flex-col sm:is-[450px]'> */}
         <CardContent className='p-6 sm:!p-12'>
           <div className='flex flex-col gap-5'>
             <div>
               <Typography variant='h4' align='center'>
-                Welcome to Randisko! 🧘
+                Login
               </Typography>
-              <Typography className='mbs-1' align='center'>
+              {/* <Typography className='mbs-1' align='center'>
                 Connect with mindful singles
-              </Typography>
+              </Typography> */}
             </div>
 
             {error && (
@@ -96,45 +97,7 @@ const LoginV1 = ({ mode }: { mode: Mode }) => {
               </Alert>
             )}
 
-            <div className='flex justify-center items-center gap-2'>
-              <IconButton
-                size='small'
-                className='text-googlePlus hover:bg-gray-100'
-                onClick={() => handleSocialLogin('google')}
-                disabled={isLoading}
-              >
-                <i className='ri-google-fill text-[20px]' />
-              </IconButton>
-              <IconButton
-                size='small'
-                className='text-facebook hover:bg-gray-100'
-                onClick={() => handleSocialLogin('facebook')}
-                disabled={isLoading}
-              >
-                <i className='ri-facebook-fill text-[20px]' />
-              </IconButton>
-              <IconButton
-                size='small'
-                className='text-pink-500 hover:bg-gray-100'
-                onClick={() => handleSocialLogin('instagram')}
-                disabled={isLoading}
-              >
-                <i className='ri-instagram-line text-[20px]' />
-              </IconButton>
-              <IconButton
-                size='small'
-                className='text-black hover:bg-gray-100'
-                onClick={() => handleSocialLogin('twitter')}
-                disabled={isLoading}
-              >
-                <i className='ri-twitter-x-fill text-[20px]' />
-              </IconButton>
-            </div>
-
-            {isLoading && <CircularProgress size={24} className='mx-auto' />}
-
-            <Divider className='gap-3'>or use email</Divider>
-
+            {/* Email / Password login */}
             <form noValidate autoComplete='off' onSubmit={e => e.preventDefault()} className='flex flex-col gap-5'>
               <TextField autoFocus fullWidth label='Email' />
               <TextField
@@ -168,16 +131,56 @@ const LoginV1 = ({ mode }: { mode: Mode }) => {
               </Button>
             </form>
 
+            <Divider className='gap-3'>or login using</Divider>
+
+            {/* Social accounts login */}
+            <div className='flex justify-center items-center gap-2'>
+              <IconButton
+                size='small'
+                className='text-googlePlus hover:bg-gray-100'
+                onClick={() => handleSocialLogin('google')}
+                disabled={isLoading}
+              >
+                <i className='ri-google-fill text-[20px]' />
+              </IconButton>
+              <IconButton
+                size='small'
+                className='text-facebook hover:bg-gray-100'
+                onClick={() => handleSocialLogin('facebook')}
+                disabled={isLoading}
+              >
+                <i className='ri-facebook-fill text-[20px]' />
+              </IconButton>
+              {/* <IconButton
+                size='small'
+                className='text-pink-500 hover:bg-gray-100'
+                onClick={() => handleSocialLogin('instagram')}
+                disabled={isLoading}
+              >
+                <i className='ri-instagram-line text-[20px]' />
+              </IconButton> */}
+              <IconButton
+                size='small'
+                className='text-black hover:bg-gray-100'
+                onClick={() => handleSocialLogin('twitter')}
+                disabled={isLoading}
+              >
+                <i className='ri-twitter-x-fill text-[20px]' />
+              </IconButton>
+            </div>
+
+            {isLoading && <CircularProgress size={24} className='mx-auto' />}
+
             <div className='flex justify-center items-center flex-wrap gap-2'>
-              <Typography>New to Randisko?</Typography>
+              <Typography>Don‘t have an account yet? </Typography>
               <Typography component={Link} href={'/register'} color='primary'>
                 Create an account
               </Typography>
             </div>
           </div>
         </CardContent>
-      </Card>
-      <Illustrations maskImg={{ src: authBackground }} />
+      {/* </Card> */}
+      {/* <Illustrations maskImg={{ src: authBackground }} /> */}
     </div>
   )
 }

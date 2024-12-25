@@ -5,7 +5,7 @@ import Grid from '@mui/material/Grid'
 import type { CardStatsCustomerStatsProps } from '@/types/pages/widgetTypes'
 
 // Component Imports
-import CustomerStats from '@components/card-statistics/CustomerStats'
+import CustomerStats from '@/components/_template/card-statistics/CustomerStats'
 
 const CustomerStatisticsCard = ({ customerStatData }: { customerStatData?: CardStatsCustomerStatsProps[] }) => {
   return (

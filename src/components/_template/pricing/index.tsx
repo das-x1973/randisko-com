@@ -1,9 +1,10 @@
+'use client'
+
 // React Imports
 import { useState } from 'react'
 import type { ChangeEvent } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Chip from '@mui/material/Chip'
 import Switch from '@mui/material/Switch'
 import Typography from '@mui/material/Typography'
@@ -15,7 +16,7 @@ import { useTheme } from '@mui/material/styles'
 import classnames from 'classnames'
 
 // Type Imports
-import type { PricingPlanType } from '@/types/randisko/pricingTypes'
+import type { PricingPlanType } from '@/types/pages/pricingTypes'
 
 // Component Imports
 import PlanDetails from './PlanDetails'
@@ -39,13 +40,11 @@ const Pricing = ({ data }: { data?: PricingPlanType[] }) => {
   return (
     <div className='flex flex-col gap-6'>
       <div className='flex flex-col justify-center items-center gap-2'>
-        <Typography variant='h4'>Your Path to Meaningful Connections</Typography>
-          <div className='flex items-center text-center flex-col mbe-[2.8rem]'>
-            <Typography>
-              Every journey starts with the right tools. Pick the plan that suits your growth and goals.
-            </Typography>
-          </div>
-          <Box mb={2} />
+        <Typography variant='h4'>Pricing Plans</Typography>
+        <div className='flex items-center text-center flex-col mbe-[2.8rem]'>
+          <Typography>All plans include 40+ advanced tools and features to boost your product.</Typography>
+          <Typography>Choose the best plan to fit your needs.</Typography>
+        </div>
         <div className='flex justify-center items-center relative mbs-0.5'>
           <InputLabel htmlFor='pricing-switch' className='cursor-pointer text-textSecondary'>
             Monthly

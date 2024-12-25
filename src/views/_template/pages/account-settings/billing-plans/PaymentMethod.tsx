@@ -22,8 +22,8 @@ import type { ButtonProps } from '@mui/material/Button'
 import type { ThemeColor } from '@core/types'
 
 // Component Imports
-import BillingCard from '@components/dialogs/billing-card'
-import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
+import BillingCard from '@/components/_template/dialogs/billing-card'
+import OpenDialogOnElementClick from '@/components/_template/dialogs/OpenDialogOnElementClick'
 
 type DataType = {
   cardNumber?: string

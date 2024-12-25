@@ -1,6 +1,5 @@
 // src/app/(private)/layout.tsx
 
-
 // MUI Imports
 import Button from '@mui/material/Button'
 
@@ -14,11 +13,11 @@ import HorizontalLayout from '@layouts/HorizontalLayout'
 
 // Component Imports
 import Providers from '@components/Providers'
-import Navigation from '@components/layout/vertical/Navigation'
-import Header from '@components/layout/horizontal/Header'
-import Navbar from '@components/layout/vertical/Navbar'
-import VerticalFooter from '@components/layout/vertical/Footer'
-import HorizontalFooter from '@components/layout/horizontal/Footer'
+import Navigation from '@/components/_template/layout/vertical/Navigation'
+import Header from '@/components/_template/layout/horizontal/Header'
+import Navbar from '@/components/_template/layout/vertical/Navbar'
+import VerticalFooter from '@/components/_template/layout/vertical/Footer'
+import HorizontalFooter from '@/components/_template/layout/horizontal/Footer'
 import Customizer from '@core/components/customizer'
 import ScrollToTop from '@core/components/scroll-to-top'
 import AuthGuard from '@/hocs/AuthGuard'

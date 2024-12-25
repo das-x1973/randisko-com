@@ -6,8 +6,8 @@ import Typography from '@mui/material/Typography'
 import type { ButtonProps } from '@mui/material/Button'
 
 // Component Imports
-import BillingCard from '@components/dialogs/billing-card'
-import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
+import BillingCard from '@/components/_template/dialogs/billing-card'
+import OpenDialogOnElementClick from '@/components/_template/dialogs/OpenDialogOnElementClick'
 
 const DialogAddCard = () => {
   // Vars

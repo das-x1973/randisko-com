@@ -9,8 +9,8 @@ import MuiButton from '@mui/material/Button'
 import type { ButtonProps } from '@mui/material/Button'
 
 // Component Imports
-import UpgradePlan from '@components/dialogs/upgrade-plan'
-import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
+import UpgradePlan from '@/components/_template/dialogs/upgrade-plan'
+import OpenDialogOnElementClick from '@/components/_template/dialogs/OpenDialogOnElementClick'
 
 const Button = styled(MuiButton)<ButtonProps>(() => ({
   backgroundColor: 'var(--mui-palette-common-white) !important',

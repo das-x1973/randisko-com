@@ -32,7 +32,7 @@ import { email, object, minLength, string, array, forward, pipe, nonEmpty, check
 
 // Component Imports
 import StepperWrapper from '@core/styles/stepper'
-import StepperCustomDot from '@components/stepper-dot'
+import StepperCustomDot from '@/components/_template/stepper-dot'
 import DirectionalIcon from '@components/DirectionalIcon'
 
 // Vars

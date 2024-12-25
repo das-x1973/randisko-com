@@ -29,8 +29,8 @@ import type { PricingPlanType } from '@/types/pages/pricingTypes'
 
 // Component Imports
 import CustomInputHorizontal from '@core/components/custom-inputs/Horizontal'
-import PricingDialog from '@components/dialogs/pricing'
-import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
+import PricingDialog from '@/components/_template/pricing'
+import OpenDialogOnElementClick from '@/components/_template/dialogs/OpenDialogOnElementClick'
 import DirectionalIcon from '@components/DirectionalIcon'
 import { useSettings } from '@core/hooks/useSettings'
 

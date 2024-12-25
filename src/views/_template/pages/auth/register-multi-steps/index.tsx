@@ -21,8 +21,8 @@ import StepperWrapper from '@core/styles/stepper'
 import StepAccountDetails from './StepAccountDetails'
 import StepPersonalInfo from './StepPersonalInfo'
 import StepBillingDetails from './StepBillingDetails'
-import StepperCustomDot from '@components/stepper-dot'
-import Logo from '@components/layout/shared/Logo'
+import StepperCustomDot from '@/components/_template/stepper-dot'
+import Logo from '@/components/_template/layout/shared/Logo'
 
 // Hook Imports
 import { useSettings } from '@core/hooks/useSettings'

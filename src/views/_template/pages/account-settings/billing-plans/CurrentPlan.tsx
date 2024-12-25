@@ -16,9 +16,9 @@ import type { PricingPlanType } from '@/types/pages/pricingTypes'
 import type { ThemeColor } from '@core/types'
 
 // Component Imports
-import ConfirmationDialog from '@components/dialogs/confirmation-dialog'
-import UpgradePlan from '@components/dialogs/upgrade-plan'
-import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
+import ConfirmationDialog from '@/components/_template/dialogs/confirmation-dialog'
+import UpgradePlan from '@/components/_template/dialogs/upgrade-plan'
+import OpenDialogOnElementClick from '@/components/_template/dialogs/OpenDialogOnElementClick'
 
 const CurrentPlan = ({ data }: { data?: PricingPlanType[] }) => {
   const buttonProps = (children: string, color: ThemeColor, variant: ButtonProps['variant']): ButtonProps => ({

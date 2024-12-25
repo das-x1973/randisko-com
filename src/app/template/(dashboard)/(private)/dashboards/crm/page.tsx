@@ -2,8 +2,8 @@
 import Grid from '@mui/material/Grid'
 
 // Components Imports
-import CardStatWithImage from '@components/card-statistics/Character'
-import CardStatVertical from '@components/card-statistics/Vertical'
+import CardStatWithImage from '@/components/_template/card-statistics/Character'
+import CardStatVertical from '@/components/_template/card-statistics/Vertical'
 import Transactions from '@/views/_template/dashboards/crm/Transactions'
 import TotalSales from '@/views/_template/dashboards/crm/TotalSales'
 import RevenueReport from '@/views/_template/dashboards/crm/RevenueReport'

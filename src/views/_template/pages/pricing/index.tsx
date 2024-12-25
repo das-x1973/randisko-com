@@ -8,7 +8,7 @@ import CardContent from '@mui/material/CardContent'
 import type { PricingPlanType } from '@/types/pages/pricingTypes'
 
 // Component Imports
-import Pricing from '@components/pricing'
+import Pricing from '@/components/_template/pricing'
 
 const PricingPage = ({ data }: { data?: PricingPlanType[] }) => {
   return (

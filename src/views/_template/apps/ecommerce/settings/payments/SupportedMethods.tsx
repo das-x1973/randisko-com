@@ -11,8 +11,8 @@ import type { ButtonProps } from '@mui/material/Button'
 
 // Component Imports
 import Link from '@components/Link'
-import PaymentMethod from '@components/dialogs/payment-method'
-import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
+import PaymentMethod from '@/components/_template/dialogs/payment-method'
+import OpenDialogOnElementClick from '@/components/_template/dialogs/OpenDialogOnElementClick'
 
 const SupportedMethods = () => {
   // Vars

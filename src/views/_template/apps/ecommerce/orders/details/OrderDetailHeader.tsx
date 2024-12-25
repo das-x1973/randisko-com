@@ -9,8 +9,8 @@ import type { ThemeColor } from '@core/types'
 import type { OrderType } from '@/types/apps/ecommerceTypes'
 
 // Component Imports
-import ConfirmationDialog from '@components/dialogs/confirmation-dialog'
-import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
+import ConfirmationDialog from '@/components/_template/dialogs/confirmation-dialog'
+import OpenDialogOnElementClick from '@/components/_template/dialogs/OpenDialogOnElementClick'
 
 type PayementStatusType = {
   text: string

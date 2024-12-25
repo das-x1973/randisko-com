@@ -1,6 +1,5 @@
 // src/components/layout/front-pages/Header.tsx
 
-
 'use client'
 
 // React Imports
@@ -23,8 +22,8 @@ import classnames from 'classnames'
 import type { Mode } from '@core/types'
 
 // Component Imports
-import Logo from '@components/layout/shared/Logo'
-import ModeDropdown from '@components/layout/shared/ModeDropdown'
+import Logo from '@/components/_template/layout/shared/Logo'
+import ModeDropdown from '@/components/_template/layout/shared/ModeDropdown'
 import FrontMenu from './FrontMenu'
 import CustomIconButton from '@core/components/mui/IconButton'
 
@@ -56,14 +55,14 @@ const Header = ({ mode }: { mode: Mode }) => {
               <IconButton onClick={() => setIsDrawerOpen(true)} className='-mis-2'>
                 <i className='ri-menu-line text-textPrimary' />
               </IconButton>
-              <Link href='/'>
+              <Link href='/front-pages/landing-page'>
                 <Logo />
               </Link>
               <FrontMenu mode={mode} isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
             </div>
           ) : (
             <div className='flex items-center gap-10'>
-              <Link href='/'>
+              <Link href='/front-pages/landing-page'>
                 <Logo />
               </Link>
               <FrontMenu mode={mode} isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
@@ -75,20 +74,22 @@ const Header = ({ mode }: { mode: Mode }) => {
               <CustomIconButton
                 component={Link}
                 variant='contained'
-                href='/register'
+                href='https://themeselection.com/item/materio-mui-nextjs-admin-template/'
                 color='primary'
+                target='_blank'
               >
-                <i className='ri-user-add-line text-xl' />
+                <i className='ri-shopping-cart-line text-xl' />
               </CustomIconButton>
             ) : (
               <Button
                 component={Link}
                 variant='contained'
-                href='/register'
-                startIcon={<i className='ri-user-add-line text-xl' />}
+                href='https://themeselection.com/item/materio-mui-nextjs-admin-template/'
+                startIcon={<i className='ri-shopping-cart-line text-xl' />}
                 className='whitespace-nowrap'
+                target='_blank'
               >
-                Register Now
+                Purchase Now
               </Button>
             )}
           </div>

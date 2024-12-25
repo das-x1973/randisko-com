@@ -11,9 +11,9 @@ import type { ButtonProps } from '@mui/material/Button'
 import type { ThemeColor } from '@core/types'
 
 // Component Imports
-import EditUserInfo from '@components/dialogs/edit-user-info'
-import ConfirmationDialog from '@components/dialogs/confirmation-dialog'
-import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
+import EditUserInfo from '@/components/_template/dialogs/edit-user-info'
+import ConfirmationDialog from '@/components/_template/dialogs/confirmation-dialog'
+import OpenDialogOnElementClick from '@/components/_template/dialogs/OpenDialogOnElementClick'
 import CustomAvatar from '@core/components/mui/Avatar'
 
 // Vars

@@ -11,7 +11,7 @@ import classnames from 'classnames'
 
 // Component Imports
 import Link from '@components/Link'
-import Logo from '@components/layout/shared/Logo'
+import Logo from '@/components/_template/layout/shared/Logo'
 
 // Util Imports
 import { frontLayoutClasses } from '@layouts/utils/layoutClasses'

@@ -17,8 +17,8 @@ import type { IconButtonProps } from '@mui/material/IconButton'
 
 // Component Imports
 import OptionMenu from '@core/components/option-menu'
-import AddNewAddress from '@components/dialogs/add-edit-address'
-import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
+import AddNewAddress from '@/components/_template/dialogs/add-edit-address'
+import OpenDialogOnElementClick from '@/components/_template/dialogs/OpenDialogOnElementClick'
 
 type propsType = {
   typeOfAddress: string

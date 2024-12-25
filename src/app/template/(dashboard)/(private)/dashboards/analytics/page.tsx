@@ -11,7 +11,7 @@ import DistributedColumnChart from '@/views/_template/dashboards/analytics/Distr
 import Performance from '@/views/_template/dashboards/analytics/Performance'
 import DepositWithdraw from '@/views/_template/dashboards/analytics/DepositWithdraw'
 import SalesByCountries from '@/views/_template/dashboards/analytics/SalesByCountries'
-import CardStatVertical from '@components/card-statistics/Vertical'
+import CardStatVertical from '@/components/_template/card-statistics/Vertical'
 import Table from '@/views/_template/dashboards/analytics/Table'
 
 const DashboardAnalytics = () => {

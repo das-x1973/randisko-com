@@ -9,8 +9,8 @@ import type { ButtonProps } from '@mui/material/Button'
 import type { PricingPlanType } from '@/types/pages/pricingTypes'
 
 // Component Imports
-import PricingDialog from '@components/dialogs/pricing'
-import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
+import PricingDialog from '@/components/_template/pricing'
+import OpenDialogOnElementClick from '@/components/_template/dialogs/OpenDialogOnElementClick'
 
 const DialogPricing = ({ data }: { data?: PricingPlanType[] }) => {
   // Vars

@@ -5,7 +5,7 @@ import Grid from '@mui/material/Grid'
 import type { CardStatsHorizontalWithBorderProps } from '@/types/pages/widgetTypes'
 
 // Components Imports
-import HorizontalWithBorder from '@components/card-statistics/HorizontalWithBorder'
+import HorizontalWithBorder from '@/components/_template/card-statistics/HorizontalWithBorder'
 
 const LogisticsStatisticsCard = ({ data }: { data?: CardStatsHorizontalWithBorderProps[] }) => {
   return (

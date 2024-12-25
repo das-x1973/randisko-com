@@ -28,7 +28,7 @@ import classnames from 'classnames'
 import type { InvoiceType } from '@/types/apps/invoiceTypes'
 
 // Component Imports
-import Logo from '@components/layout/shared/Logo'
+import Logo from '@/components/_template/layout/shared/Logo'
 
 // Styled Component Imports
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'

@@ -6,8 +6,8 @@ import Typography from '@mui/material/Typography'
 import type { ButtonProps } from '@mui/material/Button'
 
 // Component Imports
-import EditUserInfo from '@components/dialogs/edit-user-info'
-import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
+import EditUserInfo from '@/components/_template/dialogs/edit-user-info'
+import OpenDialogOnElementClick from '@/components/_template/dialogs/OpenDialogOnElementClick'
 
 const DialogEditUserInfo = () => {
   // Vars

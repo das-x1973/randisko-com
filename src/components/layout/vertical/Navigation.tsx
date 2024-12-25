@@ -15,7 +15,7 @@ import type { Mode, SystemMode } from '@core/types'
 // Component Imports
 import VerticalNav, { NavHeader, NavCollapseIcons } from '@menu/vertical-menu'
 import VerticalMenu from './VerticalMenu'
-import Logo from '@components/layout/shared/Logo'
+import Logo from '@/components/_template/layout/shared/Logo'
 
 // Hook Imports
 import useVerticalNav from '@menu/hooks/useVerticalNav'

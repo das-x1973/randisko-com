@@ -7,7 +7,7 @@ import classnames from 'classnames'
 import type { PricingPlanType } from '@/types/pages/pricingTypes'
 
 // Component Imports
-import Pricing from '@components/pricing'
+import Pricing from '@/components/_template/pricing'
 
 // Styles Imports
 import frontCommonStyles from '@views/front-pages/styles.module.css'

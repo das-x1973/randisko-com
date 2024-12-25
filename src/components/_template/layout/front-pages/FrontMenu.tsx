@@ -1,5 +1,3 @@
-// src/components/randisko/layout/front-pages/FrontMenu.tsx
-
 'use client'
 
 // React Imports
@@ -26,7 +24,7 @@ import type { Mode } from '@core/types'
 import { useIntersection } from '@/hooks/useIntersection'
 
 // Component Imports
-// import DropdownMenu from './DropdownMenu'
+import DropdownMenu from './DropdownMenu'
 
 type Props = {
   mode: Mode
@@ -92,7 +90,7 @@ const FrontMenu = (props: Props) => {
     <Wrapper isBelowLgScreen={isBelowLgScreen} isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen}>
       <Typography
         component={Link}
-        href='/'
+        href='/front-pages/landing-page'
         className={classnames('font-medium plb-3 pli-1.5 hover:text-primary', {
           'text-primary':
             !intersections.features &&
@@ -145,12 +143,12 @@ const FrontMenu = (props: Props) => {
       >
         Contact us
       </Typography>
-      {/* <DropdownMenu
+      <DropdownMenu
         mode={mode}
         isBelowLgScreen={isBelowLgScreen}
         isDrawerOpen={isDrawerOpen}
         setIsDrawerOpen={setIsDrawerOpen}
-      /> */}
+      />
       <Typography
         component={Link}
         href='/'

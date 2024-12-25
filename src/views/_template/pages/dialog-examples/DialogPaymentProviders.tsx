@@ -6,8 +6,8 @@ import Typography from '@mui/material/Typography'
 import type { ButtonProps } from '@mui/material/Button'
 
 // Component Imports
-import PaymentProviders from '@components/dialogs/payment-providers'
-import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
+import PaymentProviders from '@/components/_template/dialogs/payment-providers'
+import OpenDialogOnElementClick from '@/components/_template/dialogs/OpenDialogOnElementClick'
 
 const DialogPaymentProviders = () => {
   // Vars

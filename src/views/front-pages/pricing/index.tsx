@@ -7,7 +7,6 @@
 import { useEffect } from 'react'
 
 // Component Imports
-import PricingSection from './PricingSection'
 import FreeTrial from './FreeTrial'
 import Plans from './Plans'
 import Faqs from './Faqs'

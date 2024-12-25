@@ -9,7 +9,7 @@ import Divider from '@mui/material/Divider'
 import type { InvoiceType } from '@/types/apps/invoiceTypes'
 
 // Component Imports
-import Logo from '@components/layout/shared/Logo'
+import Logo from '@/components/_template/layout/shared/Logo'
 
 // Style Imports
 import tableStyles from '@core/styles/table.module.css'

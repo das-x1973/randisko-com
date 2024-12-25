@@ -1,12 +1,11 @@
 // src/components/layout/front-pages/index.tsx
 
-
 // Type Imports
 import type { ChildrenType } from '@core/types'
 
 // Component Imports
-import Footer from './Footer'
-import Header from './Header'
+import Footer from '@/components/_template/layout/front-pages/Footer'
+import Header from '@/components/_template/layout/front-pages/Header'
 
 // Server Action Imports
 import { getServerMode } from '@core/utils/serverHelpers'
@@ -28,5 +27,3 @@ const FrontLayout = ({ children }: ChildrenType) => {
 }
 
 export default FrontLayout
-
-

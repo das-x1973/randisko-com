@@ -30,7 +30,7 @@ import type { FormDataType } from './AddCustomerDrawer'
 
 // Component Imports
 import AddCustomerDrawer, { initialFormData } from './AddCustomerDrawer'
-import Logo from '@components/layout/shared/Logo'
+import Logo from '@/components/_template/layout/shared/Logo'
 
 // Styled Component Imports
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'

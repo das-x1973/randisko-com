@@ -8,8 +8,8 @@ import type { TypographyProps } from '@mui/material/Typography'
 import type { ThemeColor } from '@core/types'
 
 // Component Imports
-import AddAddress from '@components/dialogs/add-edit-address'
-import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
+import AddAddress from '@/components/_template/dialogs/add-edit-address'
+import OpenDialogOnElementClick from '@/components/_template/dialogs/OpenDialogOnElementClick'
 
 // Vars
 const data = {

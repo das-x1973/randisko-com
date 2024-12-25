@@ -38,8 +38,8 @@ import type { ThemeColor } from '@core/types'
 import type { PermissionRowType } from '@/types/apps/permissionTypes'
 
 // Component Imports
-import PermissionDialog from '@components/dialogs/permission-dialog'
-import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
+import PermissionDialog from '@/components/_template/dialogs/permission-dialog'
+import OpenDialogOnElementClick from '@/components/_template/dialogs/OpenDialogOnElementClick'
 
 // Style Imports
 import tableStyles from '@core/styles/table.module.css'

@@ -20,7 +20,7 @@ import type { Mode } from '@core/types'
 
 // Component Imports
 import DirectionalIcon from '@components/DirectionalIcon'
-import Logo from '@components/layout/shared/Logo'
+import Logo from '@/components/_template/layout/shared/Logo'
 import Illustrations from '@components/Illustrations'
 
 // Hook Imports

@@ -28,7 +28,7 @@ import DirectionalIcon from '@components/DirectionalIcon'
 
 // Styled Component Imports
 import StepperWrapper from '@core/styles/stepper'
-import StepperCustomDot from '@components/stepper-dot'
+import StepperCustomDot from '@/components/_template/stepper-dot'
 
 type FormDataType = {
   username: string

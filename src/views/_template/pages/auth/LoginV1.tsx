@@ -29,12 +29,11 @@ import CircularProgress from '@mui/material/CircularProgress'
 import type { Mode } from '@core/types'
 
 // Component Imports
-import Logo from '@components/layout/shared/Logo'
+import Logo from '@/components/_template/layout/shared/Logo'
 import Illustrations from '@components/Illustrations'
 
 // Hook Imports
 import { useImageVariant } from '@core/hooks/useImageVariant'
-
 
 const LoginV1 = ({ mode }: { mode: Mode }) => {
   // States
@@ -188,4 +187,3 @@ const LoginV1 = ({ mode }: { mode: Mode }) => {
 }
 
 export default LoginV1
-

@@ -31,7 +31,7 @@ import classnames from 'classnames'
 import type { Mode } from '@core/types'
 
 // Component Imports
-import Logo from '@components/layout/shared/Logo'
+import Logo from '@/components/_template/layout/shared/Logo'
 import Illustrations from '@components/Illustrations'
 
 // Config Imports

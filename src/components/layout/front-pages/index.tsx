@@ -5,8 +5,9 @@
 import type { ChildrenType } from '@core/types'
 
 // Component Imports
-import Footer from '@components/layout/front-pages/Footer'
-import Header from '@components/layout/front-pages/Header'
+import Footer from './Footer'
+import Header from './Header'
+import BottomNav from './BottomNav'
 
 // Server Action Imports
 import { getServerMode } from '@core/utils/serverHelpers'
@@ -16,17 +17,18 @@ import { frontLayoutClasses } from '@layouts/utils/layoutClasses'
 
 const FrontLayout = ({ children }: ChildrenType) => {
   // Vars
-  const mode = getServerMode()
+  const mode = getServerMode() // Fetch the current system mode (light/dark)
 
   return (
     <div className={frontLayoutClasses.root}>
       <Header mode={mode} />
       {children}
-      <Footer />
+      <BottomNav mode={mode} /> {/* Pass mode to BottomNav */}
     </div>
   )
 }
 
 export default FrontLayout
+
 
 

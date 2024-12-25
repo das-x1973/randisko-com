@@ -5,18 +5,18 @@ import Link from 'next/link'
 import classnames from 'classnames'
 
 // Type Imports
-import type { ShortcutsType } from '@components/layout/shared/ShortcutsDropdown'
-import type { NotificationsType } from '@components/layout/shared/NotificationsDropdown'
+import type { ShortcutsType } from '@/components/_template/layout/shared/ShortcutsDropdown'
+import type { NotificationsType } from '@/components/_template/layout/shared/NotificationsDropdown'
 
 // Component Imports
 import NavToggle from './NavToggle'
-import Logo from '@components/layout/shared/Logo'
-import NavSearch from '@components/layout/shared/search'
+import Logo from '@/components/_template/layout/shared/Logo'
+import NavSearch from '@/components/_template/layout/shared/search'
 
-import ModeDropdown from '@components/layout/shared/ModeDropdown'
-import ShortcutsDropdown from '@components/layout/shared/ShortcutsDropdown'
-import NotificationsDropdown from '@components/layout/shared/NotificationsDropdown'
-import UserDropdown from '@components/layout/shared/UserDropdown'
+import ModeDropdown from '@/components/_template/layout/shared/ModeDropdown'
+import ShortcutsDropdown from '@/components/_template/layout/shared/ShortcutsDropdown'
+import NotificationsDropdown from '@/components/_template/layout/shared/NotificationsDropdown'
+import UserDropdown from '@/components/_template/layout/shared/UserDropdown'
 
 // Hook Imports
 import useHorizontalNav from '@menu/hooks/useHorizontalNav'

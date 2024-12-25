@@ -10,8 +10,8 @@ import type { ButtonProps } from '@mui/material/Button'
 import Link from '@components/Link'
 
 // Component Imports
-import TwoFactorAuth from '@components/dialogs/two-factor-auth'
-import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
+import TwoFactorAuth from '@/components/_template/dialogs/two-factor-auth'
+import OpenDialogOnElementClick from '@/components/_template/dialogs/OpenDialogOnElementClick'
 
 const TwoFactorAuthenticationCard = () => {
   // Vars
