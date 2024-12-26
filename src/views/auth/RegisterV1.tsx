@@ -15,6 +15,7 @@ import { signIn } from 'next-auth/react'
 // MUI Imports
 import Link from '@mui/material/Link'
 import Alert from '@mui/material/Alert'
+import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
@@ -29,8 +30,13 @@ import CircularProgress from '@mui/material/CircularProgress'
 // Type Imports
 import type { Mode } from '@core/types'
 
+// Component Imports
+import Logo from '@/components/layout/shared/Logo'
+import Illustrations from '@components/Illustrations'
+
 // Hook Imports
 import { useImageVariant } from '@core/hooks/useImageVariant'
+import { useSettings } from '@core/hooks/useSettings'
 
 const RegisterV1 = ({ mode }: { mode: Mode }) => {
   // States
@@ -182,6 +188,7 @@ const RegisterV1 = ({ mode }: { mode: Mode }) => {
           </div>
         </div>
       </CardContent>
+      {/* <Illustrations maskImg={{ src: authBackground }} /> */}
     </div>
   )
 }

@@ -10,6 +10,7 @@ import type { ChildrenType } from '@core/types'
 // Component Imports
 import Header from './Header'
 import Footer from './Footer'
+import ModeDropdown from "../shared/ModeDropdown";
 import BottomNav from './BottomNav'
 
 // Server Action Imports
@@ -25,6 +26,7 @@ const FrontLayout = ({ children }: ChildrenType) => {
   return (
     <div className={frontLayoutClasses.root}>
       {/* <Header mode={mode} /> */}
+      <ModeDropdown />
       {children}
       <BottomNav mode={mode} />
       {/* <Footer /> */}

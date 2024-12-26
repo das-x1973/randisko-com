@@ -57,7 +57,7 @@ const ForgotPasswordV1 = ({ mode }: { mode: Mode }) => {
           </div>
         </CardContent>
       </Card>
-      <Illustrations maskImg={{ src: authBackground }} />
+      {/* <Illustrations maskImg={{ src: authBackground }} /> */}
     </div>
   )
 }
