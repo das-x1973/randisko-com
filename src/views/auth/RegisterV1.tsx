@@ -40,6 +40,7 @@ import { useSettings } from '@core/hooks/useSettings'
 
 const RegisterV1 = ({ mode }: { mode: Mode }) => {
   // States
+  const [email, setEmail] = useState('');
   const [isPasswordShown, setIsPasswordShown] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -54,32 +55,31 @@ const RegisterV1 = ({ mode }: { mode: Mode }) => {
   const lightImg = '/images/pages/auth-v1-mask-light.png'
   const authBackground = useImageVariant(mode, lightImg, darkImg)
 
-  const handleSocialRegister = async (provider: string) => {
-    if (!agreedToTerms) {
-      setError('Please agree to the Terms and Privacy Policy')
-      return
-    }
-
+  // Reusable login handler
+  const handleLogin = async (provider: string, email?: string) => {
     try {
-      setIsLoading(true)
-      setError(null)
+      setIsLoading(true);
+      setError(null);
+
+      const options = provider === 'email' ? { email } : undefined;
 
       const result = await signIn(provider, {
+        ...options,
         redirect: false,
-        callbackUrl: '/onboarding'
-      })
+        callbackUrl: '/dashboard',
+      });
 
       if (result?.error) {
-        setError(result.error)
-      } else if (result?.url) {
-        router.push(result.url)
+        setError(result.error);
+      } else if (provider === 'email') {
+        alert('Check your email for the login link!');
       }
-    } catch (error) {
-      setError('An error occurred during registration. Please try again.')
+    } catch {
+      setError('An error occurred during login. Please try again.');
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   const handleClickShowPassword = () => setIsPasswordShown(show => !show)
 
@@ -99,26 +99,22 @@ const RegisterV1 = ({ mode }: { mode: Mode }) => {
             </Alert>
           )}
 
-          <form noValidate autoComplete='off' onSubmit={e => e.preventDefault()} className='flex flex-col gap-5'>
-            <TextField fullWidth label='Email' type='email' />
+          {/* Magic Link Login */}
+          <form
+            noValidate
+            autoComplete="off"
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleLogin('email', email);
+            }}
+            className="flex flex-col gap-5"
+          >
             <TextField
+              autoFocus
               fullWidth
-              label='Password'
-              type={isPasswordShown ? 'text' : 'password'}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position='end'>
-                    <IconButton
-                      size='small'
-                      edge='end'
-                      onClick={handleClickShowPassword}
-                      onMouseDown={e => e.preventDefault()}
-                    >
-                      <i className={isPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
-                    </IconButton>
-                  </InputAdornment>
-                )
-              }}
+              label="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <FormControlLabel
               control={<Checkbox checked={agreedToTerms} onChange={e => setAgreedToTerms(e.target.checked)} />}
@@ -135,57 +131,65 @@ const RegisterV1 = ({ mode }: { mode: Mode }) => {
                 </span>
               }
             />
-            <Button fullWidth variant='contained' type='submit'>
-              Sign Up
-            </Button>
+              <Button
+                fullWidth
+                variant="contained"
+                type="submit"
+                disabled={isLoading || !email}
+              >
+                {isLoading ? <CircularProgress size={24} /> : 'Register'}
+              </Button>
           </form>
 
-          <Divider className='gap-3'>or sign up using</Divider>
+          <Divider className='gap-3'>or register using</Divider>
 
           {/* Social accounts login */}
-            <div className='flex justify-center items-center gap-2'>
+          <div className='flex justify-center items-center gap-2' >
               <IconButton
+                color='primary'
                 size='small'
-                className='text-googlePlus hover:bg-gray-100'
-                onClick={() => handleSocialRegister('google')}
+                // className='text-googlePlus hover:bg-gray-100'
+                onClick={() => handleLogin('google')}
                 disabled={isLoading}
               >
-                <i className='ri-google-fill text-[20px]' />
+                <i className='ri-google-fill text-[30px]' />
               </IconButton>
               <IconButton
+                color='primary'
                 size='small'
-                className='text-facebook hover:bg-gray-100'
-                onClick={() => handleSocialRegister('facebook')}
+                // className='text-facebook hover:bg-gray-100'
+                onClick={() => handleLogin('facebook')}
                 disabled={isLoading}
               >
-                <i className='ri-facebook-fill text-[20px]' />
+                <i className='ri-facebook-fill text-[30px]' />
               </IconButton>
               {/* <IconButton
                 size='small'
                 className='text-pink-500 hover:bg-gray-100'
-                onClick={() => handleSocialRegister('instagram')}
+                onClick={() => handleSocialLogin('instagram')}
                 disabled={isLoading}
               >
                 <i className='ri-instagram-line text-[20px]' />
               </IconButton> */}
               <IconButton
+                color='primary'
                 size='small'
-                className='text-black hover:bg-gray-100'
-                onClick={() => handleSocialRegister('twitter')}
+                // className='text-apple hover:bg-gray-100'
+                onClick={() => handleLogin('apple')}
                 disabled={isLoading}
               >
-                <i className='ri-twitter-x-fill text-[20px]' />
+                <i className='ri-apple-fill text-[30px]' />
               </IconButton>
             </div>
 
-          {isLoading && <CircularProgress size={24} className='mx-auto' />}
+            {isLoading && <CircularProgress size={24} className='mx-auto' />}
 
-          <div className='flex justify-center items-center flex-wrap gap-2'>
-            <Typography>Already have an account?</Typography>
-            <Typography component={Link} href={'/login'} color='primary'>
-              Sign in instead
-            </Typography>
-          </div>
+            <div className='flex justify-center items-center flex-wrap gap-2'>
+              <Typography>Already have an account?</Typography>
+              <Typography component={Link} href={'/login'} color='primary'>
+                Login instead
+              </Typography>
+            </div>
         </div>
       </CardContent>
       {/* <Illustrations maskImg={{ src: authBackground }} /> */}
