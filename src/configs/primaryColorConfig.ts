@@ -24,9 +24,9 @@ const primaryColorConfig = [
   },
   {
     name: 'primary-3',
-    light: '#FF6666',
-    main: '#B22222',
-    dark: '#800000', 
+    light: '#5CACEE', // Slightly darker SkyBlue light
+    main: '#1C86EE',  // Slightly darker DeepSkyBlue main
+    dark: '#104E8B',  // Slightly darker DodgerBlue dark
   },
 ];
 

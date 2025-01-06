@@ -12,6 +12,9 @@ import type { Adapter } from 'next-auth/adapters';
 import { PrismaAdapter } from '@auth/prisma-adapter';
 import { prisma } from '@/libs/prisma';
 
+// Nodemailer imports
+import { createTransport } from 'nodemailer';
+
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma) as Adapter,
   providers: [
@@ -35,30 +38,38 @@ export const authOptions: NextAuthOptions = {
 
     // Magic Link (Email) Provider
     EmailProvider({
-      server: process.env.EMAIL_SERVER as string,
+      server: {
+        host: process.env.EMAIL_SERVER as string,
+        port: 587,
+        auth: {
+          user: process.env.EMAIL_SERVER_USER as string,
+          pass: process.env.EMAIL_SERVER_PASSWORD as string,
+        },
+      },
       from: process.env.EMAIL_FROM as string,
+      sendVerificationRequest: ({ identifier, url, provider }) => {
+        const { host } = new URL(url);
+        const transport = createTransport(provider.server);
+        transport.sendMail({
+          to: identifier,
+          from: provider.from,
+          subject: `Sign in to ${host}`,
+          text: `Sign in to ${host}\n\n${url}\n\n`,
+        });
+      },
     }),
   ],
 
   callbacks: {
-    async signIn({ user, account, profile }) {
-      // Example: Add custom logic if needed
-      return true; // Allow all sign-ins
-    },
-    async redirect({ url, baseUrl }) {
-      return url.startsWith(baseUrl) ? url : baseUrl;
-    },
-    async session({ session, token }) {
-      // Attach token to session
-      session.user.id = token.sub; // Ensure `id` is available in session
-      return session;
-    },
-    async jwt({ token, user, account }) {
-      // Add account information to JWT if needed
-      if (account) {
-        token.provider = account.provider;
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
       }
       return token;
+    },
+    async session({ session, token }) {
+      session.user.id = token.id as string;
+      return session;
     },
   },
 
