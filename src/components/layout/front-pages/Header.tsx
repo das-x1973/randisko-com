@@ -71,14 +71,14 @@ const Header = ({ mode }: { mode: Mode }) => {
           <div className='flex items-center gap-2 sm:gap-4'>
             <ModeDropdown />
             {isBelowLgScreen ? (
-              <CustomIconButton component={Link} variant='contained' href='/register' color='primary'>
+              <CustomIconButton component={Link} variant='contained' href='/auth/register' color='primary'>
                 <i className='ri-user-add-line text-xl' />
               </CustomIconButton>
             ) : (
               <Button
                 component={Link}
                 variant='contained'
-                href='/register'
+                href='/auth/register'
                 startIcon={<i className='ri-user-add-line text-xl' />}
                 className='whitespace-nowrap'
               >

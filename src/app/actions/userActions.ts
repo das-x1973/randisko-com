@@ -1,64 +1,66 @@
 // /app/actions/userActions.ts
-'use server'
+
+
+'use server';
 
 import { prisma } from '@/libs/prisma';
 
 export const findOrCreateUser = async (email: string, account: any) => {
   if (!email) throw new Error('No email provided');
 
-  // Find an existing user
+  // Attempt to find the user by email
   let user = await prisma.user.findUnique({
     where: { email },
-    include: { profile: true }
+    include: { profile: true },
   });
 
-  // If the user exists, link the account or update if needed
-  if (user && account) {
-    await prisma.account.upsert({
-      where: {
-        provider_providerAccountId: {
+  if (user) {
+    // If user exists, update or link the account
+    if (account) {
+      await prisma.account.upsert({
+        where: {
+          provider_providerAccountId: {
+            provider: account.provider,
+            providerAccountId: account.providerAccountId,
+          },
+        },
+        create: {
+          userId: user.id,
           provider: account.provider,
           providerAccountId: account.providerAccountId,
+          type: 'oauth',
+          access_token: account.access_token,
+          refresh_token: account.refresh_token,
+          expires_at: account.expires_at,
+          token_type: account.token_type,
+          scope: account.scope,
+          id_token: account.id_token,
+          session_state: account.session_state,
         },
-      },
-      create: {
-        userId: user.id,
-        provider: account.provider,
-        providerAccountId: account.providerAccountId,
-        type: 'oauth',
-        access_token: account.access_token,
-        refresh_token: account.refresh_token,
-        expires_at: account.expires_at,
-        token_type: account.token_type,
-        scope: account.scope,
-        id_token: account.id_token,
-        session_state: account.session_state,
-      },
-      update: {},
-    });
-  }
-
-  // If no existing user, proceed to create a new user along with the profile
-  if (!user) {
+        update: {},
+      });
+    }
+  } else {
+    // If no user exists, create a new one
     user = await prisma.user.create({
       data: {
         email,
         name: account?.name ?? null,
         image: account?.picture ?? null,
+        emailVerified: new Date(), // Mark email as verified
         profile: {
           create: {
             isOnboarded: false,
           },
         },
       },
-      include: {
-        profile: true, // Ensure profile is included in the return object
-      },
+      include: { profile: true },
     });
   }
 
   return user;
 };
+
 
 
 export const getUserById = async (userId: string) => {
@@ -67,3 +69,6 @@ export const getUserById = async (userId: string) => {
     include: { profile: true }
   });
 };
+
+
+

@@ -28,8 +28,8 @@ const BottomNav = ({ mode }: { mode: Mode }) => {
   // Navigation paths
   const navigationPaths = [
     { label: "Home", value: "/" },
-    { label: "Login", value: "/login" },
-    { label: "Register now", value: "/register" },
+    { label: "Login", value: "/auth/login" },
+    { label: "Register now", value: "/auth/register" },
   ];
 
   return (

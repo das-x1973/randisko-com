@@ -76,7 +76,7 @@ const LandingPageWrapper = ({ mode }: { mode: Mode }) => {
         >
           Join a community of conscious individuals seeking authentic relationships rooted in personal growth and well-being.
         </Typography>
-        <Link href="/register" passHref>
+        <Link href="/auth/register" passHref>
           <Button variant="contained" color="primary" size="large">
             Start Your Journey
           </Button>
@@ -135,7 +135,7 @@ const LandingPageWrapper = ({ mode }: { mode: Mode }) => {
           Join Randisko today and discover meaningful connections with people who share your values.
         </Typography>
         <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center' }}>
-          <Link href="/register" passHref>
+          <Link href="/auth/register" passHref>
             <Button variant="contained" color="primary" size="large">
               Create Your Profile
             </Button>

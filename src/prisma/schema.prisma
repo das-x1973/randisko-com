@@ -280,3 +280,6 @@ model Conversation {
   messages     Message[] // List of messages in the conversation
   participants ConversationParticipant[] // List of participants in the conversation
 }
+
+
+

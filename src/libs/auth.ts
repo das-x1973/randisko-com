@@ -1,42 +1,32 @@
 // src/libs/auth.ts
 
-// NextAuth imports
 import GoogleProvider from 'next-auth/providers/google';
 import FacebookProvider from 'next-auth/providers/facebook';
 import AppleProvider from 'next-auth/providers/apple';
 import EmailProvider from 'next-auth/providers/email';
-import type { NextAuthOptions, Account, Profile } from 'next-auth';
+import type { NextAuthOptions, User } from 'next-auth';
 import type { Adapter } from 'next-auth/adapters';
 
-// Prisma imports
 import { PrismaAdapter } from '@auth/prisma-adapter';
 import { prisma } from '@/libs/prisma';
 
-// Nodemailer imports
 import { createTransport } from 'nodemailer';
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma) as Adapter,
   providers: [
-    // Google Provider
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
-
-    // Facebook Provider
     FacebookProvider({
       clientId: process.env.FACEBOOK_CLIENT_ID as string,
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET as string,
     }),
-
-    // Apple Provider
     AppleProvider({
       clientId: process.env.APPLE_CLIENT_ID as string,
       clientSecret: process.env.APPLE_CLIENT_SECRET as string,
     }),
-
-    // Magic Link (Email) Provider
     EmailProvider({
       server: {
         host: process.env.EMAIL_SERVER as string,
@@ -61,34 +51,72 @@ export const authOptions: NextAuthOptions = {
   ],
 
   callbacks: {
+    async signIn({ user, account }) {
+      if (!user || !account) return false;
+
+      const existingUser = await prisma.user.findUnique({
+        where: { email: user.email! },
+      });
+
+      if (!existingUser) {
+        // If user does not exist, mark as new user and add an activity
+        await prisma.userActivity.create({
+          data: {
+            userId: user.id,
+            type: 'USER_CREATED',
+            provider: account.provider,
+            isNewUser: true,
+          },
+        });
+      } else {
+        // If user exists, update last login activity
+        await prisma.userActivity.create({
+          data: {
+            userId: user.id,
+            type: 'SIGN_IN',
+            provider: account.provider,
+            isNewUser: false,
+          },
+        });
+      }
+
+      return true;
+    },
+
     async jwt({ token, user }) {
       if (user) {
-        token.id = user.id;
+        const userActivity = await prisma.userActivity.findFirst({
+          where: {
+            userId: user.id,
+            type: 'USER_CREATED',
+          },
+          orderBy: { createdAt: 'desc' },
+        });
+
+        token.isNewUser = userActivity?.isNewUser ?? false;
       }
       return token;
     },
+
     async session({ session, token }) {
-      session.user.id = token.id as string;
+      session.user.id = token.sub as string;
+      session.user.isNewUser = token.isNewUser as boolean | undefined;
       return session;
     },
   },
 
+  pages: {
+    signIn: '/auth/login',
+    verifyRequest: '/auth/verify-email',
+    newUser: '/onboarding',
+  },
+
   session: {
     strategy: 'jwt',
-    maxAge: 30 * 24 * 60 * 60, // 30 days
-  },
-
-  pages: {
-    signIn: '/auth/login', // Custom login page
-    verifyRequest: '/auth/verify-email', // Magic Link verification
-  },
-
-  events: {
-    async signIn({ user, account }) {
-      // Log user sign-in activity if needed
-      console.log(`User ${user.email} signed in with ${account?.provider}.`);
-    },
+    maxAge: 30 * 24 * 60 * 60,
+    updateAge: 24 * 60 * 60,
   },
 
   debug: process.env.NODE_ENV === 'development',
 };
+
